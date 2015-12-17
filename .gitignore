@@ -1,1 +1,4 @@
 /draft/photoshop
+node_modules
+.sass-cache
+distribution
