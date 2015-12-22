@@ -1,0 +1,71 @@
+/*****************************************************************
+LAYOUT
+*****************************************************************/
+
+$separator-height: 30px;
+
+/*****************************************************************
+TEXT
+*****************************************************************/
+
+$base-font-size: 12px;
+$base-font-family: 'Arial';
+
+/*****************************************************************
+GRID
+*****************************************************************/
+
+$grid-row-name: grid !default;
+$grid-col-name: col !default;
+$grid-col-groups: (6) !default;
+$grid-gutter: 5px !default;
+
+/*****************************************************************
+COLORS
+*****************************************************************/
+
+$nav-text-color: #fff;
+
+$frame-color: #5b8ba7;
+$frame-color-trans: #FFC884;
+
+$menu-color-nav-opener: #3B327A;
+$menu-color-nav-opener-darker: #100942;
+
+$menu-color-1: #323a79;
+$menu-color-1-darker: #090f40;
+$menu-color-1-trans: #B08F39;
+$menu-color-1-darker-trans: #5D4301;
+
+$menu-color-2: #2e4575;
+$menu-color-2-darker: #07193f;
+$menu-color-2-trans: #AF8739;
+$menu-color-2-darker-trans: #5E3F01;
+
+$menu-color-3: #2a4f72;
+$menu-color-3-darker: #05213d;
+$menu-color-3-trans: #B07F38;
+$menu-color-3-darker-trans: #5E3801;
+
+$menu-color-4: #265c6e;
+$menu-color-4-darker: #032d3b;
+$menu-color-4-trans: #B07638;
+$menu-color-4-darker-trans: #5E3101;
+
+$menu-color-5: #246e64;
+$menu-color-5-darker: #003b33;
+$menu-color-5-trans: #AF6A39;
+$menu-color-5-darker-trans: #5E2700;
+
+$menu-color-6: #287A53;
+$menu-color-6-darker: #014122;
+$menu-color-6-trans: #AF5839;
+$menu-color-6-darker-trans: #5D1901;
+
+/*****************************************************************
+MEDIA QUERY
+*****************************************************************/
+
+$media-breakpoint-large: 1280px !default;
+$media-breakpoint-medium: 700px !default;
+$media-breakpoint-small: 480px !default;

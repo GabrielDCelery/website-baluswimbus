@@ -1,0 +1,18 @@
+body {
+	font-size: $base-font-size;
+	font-family: $base-font-family;
+}
+
+@media (min-width: $media-breakpoint-medium) {
+	body {
+		font-size: $base-font-size * 1.2;
+	}
+
+}
+
+@media (min-width: $media-breakpoint-large) {
+	body {
+		font-size: $base-font-size * 1.5;
+	}
+
+}

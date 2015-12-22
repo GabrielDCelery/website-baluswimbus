@@ -1,0 +1,149 @@
+/************************************************************************
+NAV COLLAPSE BUTTON
+************************************************************************/
+
+#nav-collapse {
+	display: block;
+
+	width: 100%;
+	height: $separator-height;
+
+	position: absolute;
+	top: -$separator-height;
+
+	text-align: center;
+
+	background-color: $frame-color;
+
+	cursor: pointer;
+
+	&:hover {
+		background-color: $frame-color-trans;
+	}
+
+	img {
+		height: 100%;
+	}
+}
+
+/************************************************************************
+NAV
+************************************************************************/
+
+nav {
+	background-color: #fff;
+	color: $nav-text-color;
+	text-align: center;
+
+	ul,
+	li,
+	[id*='nav-'] {
+		height: 100%;
+	}
+
+	@each $group in $grid-col-groups {
+
+		@for $i from 1 through $group {
+			.#{$grid-col-name}-#{$i}-#{$group} {
+				height: 100% / $group;
+			}
+		}
+	}
+
+
+	.nav-text {
+		display: flex;
+		height: 100%;
+		justify-content: center;
+		align-items: center;
+	}
+
+}
+
+
+#nav-1 {
+	@include nav-button ($menu-color-1, $menu-color-1-darker, $menu-color-1-trans, $menu-color-1-darker-trans, "../img/icon-aboutus.png");
+}
+
+#nav-2 {
+	@include nav-button ($menu-color-2, $menu-color-2-darker, $menu-color-2-trans, $menu-color-2-darker-trans, "../img/icon-services.png");
+}
+
+#nav-3 {
+	@include nav-button ($menu-color-3, $menu-color-3-darker, $menu-color-3-trans, $menu-color-3-darker-trans, "../img/icon-van.png");
+}
+
+#nav-4 {
+	@include nav-button ($menu-color-4, $menu-color-4-darker, $menu-color-4-trans, $menu-color-4-darker-trans, "../img/icon-customers.png");
+}
+
+#nav-5 {
+	@include nav-button ($menu-color-5, $menu-color-5-darker, $menu-color-5-trans, $menu-color-5-darker-trans, "../img/icon-contact.png");
+}
+
+#nav-6 {
+	@include nav-button ($menu-color-6, $menu-color-6-darker, $menu-color-6-trans, $menu-color-6-darker-trans, "../img/icon-news.png");
+}
+
+
+/************************************************************************
+MEDIA QUERY
+************************************************************************/
+
+@media (min-width: $media-breakpoint-medium) {
+
+	nav {
+		ul {
+			width: 90%;
+			
+			position: absolute;
+			left: 50%;
+	    	transform: translateX(-50%);
+			
+			margin-top: $separator-height;
+
+			[id*='nav-']{
+				padding: 5%;
+			}
+
+		}
+
+		@each $group in $grid-col-groups {
+
+			@for $i from 1 through $group {
+				.#{$grid-col-name}-#{$i}-#{$group} {
+					height: 100%;
+				}
+			}
+		}
+
+		.nav-text {
+			margin-top: 7%;
+			height: auto;
+		}
+
+	}
+
+	/********************** NAV ICONS ***********************/
+
+    .nav-icon {
+		width: 70%;
+
+    	position: relative;
+
+    	margin: 0 auto;
+
+		border-radius:100%;
+		background-size: 70%;
+		background-repeat: no-repeat;
+		background-position: center center; 
+    }
+
+	.nav-icon:before{
+		content: "";
+		display: block;
+		padding-top: 100%;
+	}
+
+}
+

@@ -1,0 +1,25 @@
+
+@mixin nav-button ($basecolor, $basecolor-darker, $basecolor-compl, $basecolor-darker-compl, $imgurl) {
+
+  background-color: $basecolor;
+  cursor: pointer;
+
+  .nav-icon{
+    background-color: $basecolor-darker;
+    background-image: url($imgurl);
+    transition: all 0.5s;
+  }
+
+
+  &:hover {
+    background-color: $basecolor-compl;
+
+    .nav-icon{
+      background-color: $basecolor-darker-compl;
+    }
+  }
+
+  transition: all 0.5s;
+
+}
+

@@ -1,0 +1,104 @@
+/************************************************************************
+BASIC LAYOUT (MOBILE-FIRST)
+************************************************************************/
+
+html,
+body {
+	height: 100%;
+}
+
+header,
+main,
+nav {
+	width: 100%;
+}
+
+header {
+	height: 5%;
+}
+
+main {
+	height: 95%;
+}
+
+nav {
+	height: 80%;
+	position: fixed;
+	bottom: 0;
+}
+
+main,
+nav {
+	transition: all 0.5s;
+}
+
+/************************************************************************
+COLLAPSE-NAV CLASSES
+************************************************************************/
+
+.mainExtend{
+	height: 95%;
+}
+
+.navCollapse{
+	height: 0%;
+}
+
+/************************************************************************
+GRID
+************************************************************************/
+
+@each $group in $grid-col-groups {
+
+	@for $i from 1 through $group {
+		.#{$grid-col-name}-#{$i}-#{$group} {
+			width: 100%;
+			float: left;
+		}
+	}
+}
+
+.#{$grid-row-name}:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+/************************************************************************
+MEDIA QUERY
+************************************************************************/
+
+@media (min-width: $media-breakpoint-medium) {
+	main {
+		height: 65%;
+	}
+
+	nav {
+		height: 30%;
+		bottom: 0%;
+	}
+
+	@each $group in $grid-col-groups {
+
+		@for $i from 1 through $group {
+			.#{$grid-col-name}-#{$i}-#{$group} {
+				width: 100% / $group;
+			}
+		}
+	}
+
+	[class*='#{$grid-col-name}-'] {
+		padding-right: $grid-gutter;
+		padding-left: $grid-gutter;
+	}
+}
+
+@media (min-width: $media-breakpoint-large) {
+
+	[class*='#{$grid-col-name}-'] {
+		padding-right: $grid-gutter * 2;
+		padding-left: $grid-gutter * 2;
+	}
+
+}
+
