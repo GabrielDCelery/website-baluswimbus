@@ -45,26 +45,6 @@ COLLAPSE-NAV CLASSES
 }
 
 /************************************************************************
-GRID
-************************************************************************/
-
-@each $group in $grid-col-groups {
-
-	@for $i from 1 through $group {
-		.#{$grid-col-name}-#{$i}-#{$group} {
-			width: 100%;
-			float: left;
-		}
-	}
-}
-
-.#{$grid-row-name}:after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-/************************************************************************
 MEDIA QUERY
 ************************************************************************/
 
@@ -76,28 +56,6 @@ MEDIA QUERY
 	nav {
 		height: 30%;
 		bottom: 0%;
-	}
-
-	@each $group in $grid-col-groups {
-
-		@for $i from 1 through $group {
-			.#{$grid-col-name}-#{$i}-#{$group} {
-				width: 100% / $group;
-			}
-		}
-	}
-
-	[class*='#{$grid-col-name}-'] {
-		padding-right: $grid-gutter;
-		padding-left: $grid-gutter;
-	}
-}
-
-@media (min-width: $media-breakpoint-large) {
-
-	[class*='#{$grid-col-name}-'] {
-		padding-right: $grid-gutter * 2;
-		padding-left: $grid-gutter * 2;
 	}
 
 }

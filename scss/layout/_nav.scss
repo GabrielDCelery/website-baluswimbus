@@ -44,7 +44,7 @@ nav {
 	@each $group in $grid-col-groups {
 
 		@for $i from 1 through $group {
-			.#{$grid-col-name}-#{$i}-#{$group} {
+			[class^='#{$grid-col-name}-#{$i}-#{$group}']{
 				height: 100% / $group;
 			}
 		}
@@ -111,7 +111,7 @@ MEDIA QUERY
 		@each $group in $grid-col-groups {
 
 			@for $i from 1 through $group {
-				.#{$grid-col-name}-#{$i}-#{$group} {
+				[class^='#{$grid-col-name}-#{$i}-#{$group}']{
 					height: 100%;
 				}
 			}

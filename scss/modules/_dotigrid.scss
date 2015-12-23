@@ -1,0 +1,131 @@
+/**********************************************************************************
+MEDIA QUERIES
+**********************************************************************************/
+
+$media-breakpoint-large: 1200px !default;
+$media-breakpoint-medium: 700px !default;
+
+/**********************************************************************************
+VARIABLES
+**********************************************************************************/
+
+$grid-row-name: row !default;
+$grid-col-name: col !default;
+
+$grid-col-groups: (6) !default;
+
+$grid-gutter-large: 20px !default;
+$grid-gutter-medium: 10px !default;
+$grid-gutter-small: 5px !default;
+
+/**********************************************************************************
+CODE
+**********************************************************************************/
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+[class^='#{$grid-col-name}']{
+  float: left;
+}
+
+.#{$grid-row-name}:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+[class^='#{$grid-col-name}'] {
+  padding-right: $grid-gutter-small;
+}
+
+[class^='#{$grid-col-name}']:last-of-type {
+  padding-right: 0;
+}
+
+@each $group in $grid-col-groups {
+
+  @for $i from 1 through $group {
+    [class^='#{$grid-col-name}-#{$i}-#{$group}'] {
+      width: 100% / $group * $i;
+    }
+  }
+
+}
+
+@media (max-width: ($media-breakpoint-medium - 1px)){
+
+  @each $group in $grid-col-groups {
+
+    @for $i from 1 through $group {
+      .#{$grid-col-name}-#{$i}-#{$group}--s {
+        width: 100%;
+        padding-right: 0;
+      }
+    }
+
+  }
+
+
+}
+
+@media (min-width: $media-breakpoint-medium){
+
+  [class^='#{$grid-col-name}'] {
+    padding-right: $grid-gutter-medium;
+  }
+
+
+  @each $group in $grid-col-groups {
+
+    @for $i from 1 through $group {
+      .#{$grid-col-name}-#{$i}-#{$group}--s {
+        width: 100% / $group * $i;
+      }
+    }
+
+  }
+
+  @each $group in $grid-col-groups {
+
+    @for $i from 1 through $group {
+      .#{$grid-col-name}-#{$i}-#{$group}--m {
+        width: 100%;
+        padding-right: 0;
+      }
+    }
+
+  }
+
+
+}
+
+@media (min-width: $media-breakpoint-large){
+
+  [class^='#{$grid-col-name}'] {
+    padding-right: $grid-gutter-large;
+  }
+
+  @each $group in $grid-col-groups {
+
+    @for $i from 1 through $group {
+      .#{$grid-col-name}-#{$i}-#{$group}--s {
+        width: 100% / $group * $i;
+      }
+    }
+
+  }
+
+  @each $group in $grid-col-groups {
+
+    @for $i from 1 through $group {
+      .#{$grid-col-name}-#{$i}-#{$group}--m {
+        width: 100% / $group * $i;
+      }
+    }
+
+  }
+
+}

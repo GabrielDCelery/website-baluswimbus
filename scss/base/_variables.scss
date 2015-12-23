@@ -12,15 +12,6 @@ $base-font-size: 12px;
 $base-font-family: 'Arial';
 
 /*****************************************************************
-GRID
-*****************************************************************/
-
-$grid-row-name: grid !default;
-$grid-col-name: col !default;
-$grid-col-groups: (6) !default;
-$grid-gutter: 5px !default;
-
-/*****************************************************************
 COLORS
 *****************************************************************/
 
@@ -61,11 +52,3 @@ $menu-color-6: #287A53;
 $menu-color-6-darker: #014122;
 $menu-color-6-trans: #AF5839;
 $menu-color-6-darker-trans: #5D1901;
-
-/*****************************************************************
-MEDIA QUERY
-*****************************************************************/
-
-$media-breakpoint-large: 1280px !default;
-$media-breakpoint-medium: 700px !default;
-$media-breakpoint-small: 480px !default;
