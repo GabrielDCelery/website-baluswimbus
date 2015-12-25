@@ -62,7 +62,9 @@ JAVASCRIPT
 gulp.task('concatJs', function(){
 	return gulp.src(
 		[
-			'js/_main.js'
+			'js/_eventemitter.js',
+			'js/_main.js',
+			'js/_nav.js'
 		]
 	)
 	.pipe(concat('app.js'))

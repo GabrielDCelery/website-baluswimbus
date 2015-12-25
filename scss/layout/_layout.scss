@@ -1,6 +1,11 @@
 /************************************************************************
 BASIC LAYOUT (MOBILE-FIRST)
 ************************************************************************/
+html {
+	overflow: scrollbars-vertical; 
+	overflow-y: scroll;
+}
+
 
 html,
 body {
@@ -19,6 +24,7 @@ header {
 
 main {
 	height: 95%;
+	margin: 0 auto;
 }
 
 nav {
@@ -59,4 +65,3 @@ MEDIA QUERY
 	}
 
 }
-

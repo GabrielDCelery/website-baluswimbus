@@ -384,17 +384,20 @@ VARIABLES
 /**********************************************************************************
 CODE
 **********************************************************************************/
-* {
+*, *:before, *:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
+.row {
+  display: block; }
+
 [class^='col'] {
   float: left; }
 
-.row:after {
+.row::after {
   content: "";
-  display: table;
+  display: block;
   clear: both; }
 
 [class^='col'] {
@@ -536,11 +539,18 @@ LAYOUT
 TEXT
 *****************************************************************/
 /*****************************************************************
+CONTENT
+*****************************************************************/
+/*****************************************************************
 COLORS
 *****************************************************************/
 /************************************************************************
 BASIC LAYOUT (MOBILE-FIRST)
 ************************************************************************/
+html {
+  overflow: scrollbars-vertical;
+  overflow-y: scroll; }
+
 html,
 body {
   height: 100%; }
@@ -554,7 +564,8 @@ header {
   height: 5%; }
 
 main {
-  height: 95%; }
+  height: 95%;
+  margin: 0 auto; }
 
 nav {
   height: 80%;
@@ -587,25 +598,94 @@ MEDIA QUERY
 header {
   background-color: #5b8ba7; }
 
-#content-1 {
-  width: 100%;
-  height: 100%; }
+[id^='content-'] {
+  padding: 30px 0; }
+  [id^='content-'] p {
+    padding: 15px; }
 
-#content-1 {
+.table {
+  display: table; }
+
+.table-cell {
+  display: table-cell; }
+
+.content-padding {
+  padding-bottom: 15px; }
+
+.text-align-center {
+  text-align: center; }
+
+#content-intro,
+#content-aboutus,
+#content-services,
+#content-vehicles,
+#content-customers,
+#content-contact {
+  height: 100%;
+  margin: 0 auto; }
+
+#content-intro {
+  width: 100%; }
+
+#content-aboutus,
+#content-services,
+#content-vehicles,
+#content-customers,
+#content-contact {
+  width: 90%; }
+
+#content-aboutus img {
+  max-width: 40%;
+  border-radius: 100%;
+  display: block;
+  margin: 0px auto; }
+
+#content-vehicles img {
+  max-width: 80%;
+  border-radius: 7.5px;
+  display: block;
+  margin: 0px auto; }
+
+#content-customers div {
+  text-align: center; }
+#content-customers img {
+  max-width: 30%;
+  border-radius: 7.5px;
+  display: block;
+  margin: 0px auto; }
+
+#content-intro {
   background-image: url("../img/index-photo.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center; }
 
+@media (min-width: 700px) {
+  .table-cell {
+    vertical-align: middle; }
+
+  #content-aboutus,
+  #content-services,
+  #content-vehicles {
+    width: 80%; }
+
+  #content-contact {
+    width: 60%; }
+
+  #content-aboutus img {
+    max-width: 100%; }
+
+  #content-vehicles img {
+    max-width: 70%; } }
 /************************************************************************
 NAV COLLAPSE BUTTON
 ************************************************************************/
 #nav-collapse {
   display: block;
   width: 100%;
-  height: 30px;
+  height: 45px;
   position: absolute;
-  top: -30px;
+  top: -45px;
   text-align: center;
   background-color: #5b8ba7;
   cursor: pointer; }
@@ -643,88 +723,92 @@ nav {
     justify-content: center;
     align-items: center; }
 
-#nav-1 {
+#nav-aboutus {
   background-color: #323a79;
   cursor: pointer;
   transition: all 0.5s; }
-  #nav-1 .nav-icon {
+  #nav-aboutus .nav-icon {
     background-color: #090f40;
     background-image: url("../img/icon-aboutus.png");
     transition: all 0.5s; }
-  #nav-1:hover {
+  #nav-aboutus:hover {
     background-color: #B08F39; }
-    #nav-1:hover .nav-icon {
+    #nav-aboutus:hover .nav-icon {
       background-color: #5D4301; }
 
-#nav-2 {
+#nav-services {
   background-color: #2e4575;
   cursor: pointer;
   transition: all 0.5s; }
-  #nav-2 .nav-icon {
+  #nav-services .nav-icon {
     background-color: #07193f;
     background-image: url("../img/icon-services.png");
     transition: all 0.5s; }
-  #nav-2:hover {
+  #nav-services:hover {
     background-color: #AF8739; }
-    #nav-2:hover .nav-icon {
+    #nav-services:hover .nav-icon {
       background-color: #5E3F01; }
 
-#nav-3 {
+#nav-vehicles {
   background-color: #2a4f72;
   cursor: pointer;
   transition: all 0.5s; }
-  #nav-3 .nav-icon {
+  #nav-vehicles .nav-icon {
     background-color: #05213d;
     background-image: url("../img/icon-van.png");
     transition: all 0.5s; }
-  #nav-3:hover {
+  #nav-vehicles:hover {
     background-color: #B07F38; }
-    #nav-3:hover .nav-icon {
+    #nav-vehicles:hover .nav-icon {
       background-color: #5E3801; }
 
-#nav-4 {
+#nav-customers {
   background-color: #265c6e;
   cursor: pointer;
   transition: all 0.5s; }
-  #nav-4 .nav-icon {
+  #nav-customers .nav-icon {
     background-color: #032d3b;
     background-image: url("../img/icon-customers.png");
     transition: all 0.5s; }
-  #nav-4:hover {
+  #nav-customers:hover {
     background-color: #B07638; }
-    #nav-4:hover .nav-icon {
+    #nav-customers:hover .nav-icon {
       background-color: #5E3101; }
 
-#nav-5 {
+#nav-contact {
   background-color: #246e64;
   cursor: pointer;
   transition: all 0.5s; }
-  #nav-5 .nav-icon {
+  #nav-contact .nav-icon {
     background-color: #003b33;
     background-image: url("../img/icon-contact.png");
     transition: all 0.5s; }
-  #nav-5:hover {
+  #nav-contact:hover {
     background-color: #AF6A39; }
-    #nav-5:hover .nav-icon {
+    #nav-contact:hover .nav-icon {
       background-color: #5E2700; }
 
-#nav-6 {
+#nav-news {
   background-color: #287A53;
   cursor: pointer;
   transition: all 0.5s; }
-  #nav-6 .nav-icon {
+  #nav-news .nav-icon {
     background-color: #014122;
     background-image: url("../img/icon-news.png");
     transition: all 0.5s; }
-  #nav-6:hover {
+  #nav-news:hover {
     background-color: #AF5839; }
-    #nav-6:hover .nav-icon {
+    #nav-news:hover .nav-icon {
       background-color: #5D1901; }
 
 /************************************************************************
 MEDIA QUERY
 ************************************************************************/
 @media (min-width: 700px) {
+  #nav-collapse {
+    height: 30px;
+    top: -30px; }
+
   nav ul {
     width: 90%;
     position: absolute;

@@ -1,12 +1,124 @@
-#content-1 {
-	width: 100%;
-	height: 100%;
+[id^='content-']{
+	padding: $separator-height 0;
+
+	p {
+		padding: $content-padding;
+	}
+
 }
 
-#content-1 {
+.table {
+	display: table;
+}
+
+.table-cell {
+	display: table-cell;
+}
+
+.content-padding {
+	padding-bottom: $content-padding;
+}
+
+.text-align-center {
+	text-align: center;
+}
+
+#content-intro,
+#content-aboutus,
+#content-services,
+#content-vehicles,
+#content-customers,
+#content-contact {
+	height: 100%;
+	margin: 0 auto;
+
+}
+
+#content-intro {
+	width: 100%;
+}
+
+#content-aboutus,
+#content-services,
+#content-vehicles,
+#content-customers,
+#content-contact {
+	width: 90%;
+}
+
+#content-aboutus{
+
+		img {
+			max-width: 40%;
+			border-radius: 100%;
+			display: block;
+			margin: 0px auto;
+		}
+}
+
+#content-vehicles {
+
+		img {
+			max-width: 80%;
+			border-radius: $content-padding / 2;
+			display: block;
+			margin: 0px auto;
+		}
+
+}
+
+#content-customers {
+
+		div {
+			text-align: center;
+		}
+
+		img {
+			max-width: 30%;
+			border-radius: $content-padding / 2;
+			display: block;
+			margin: 0px auto;
+		}
+		
+}
+
+#content-intro {
 	background-image: url("../img/index-photo.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
+
+}
+
+@media (min-width: $media-breakpoint-medium) {
+
+	.table-cell {
+		vertical-align: middle;
+	}
+
+	#content-aboutus,
+	#content-services,
+	#content-vehicles {
+		width: 80%;
+	}
+
+	#content-contact {
+		width: 60%;
+	}
+
+	#content-aboutus{
+
+		img {
+			max-width: 100%;
+		}
+	}
+
+
+	#content-vehicles {
+
+		img {
+			max-width: 70%;
+		}
+	}
 
 }

@@ -6,10 +6,10 @@ NAV COLLAPSE BUTTON
 	display: block;
 
 	width: 100%;
-	height: $separator-height;
+	height: $separator-height * 1.5;
 
 	position: absolute;
-	top: -$separator-height;
+	top: -$separator-height * 1.5;
 
 	text-align: center;
 
@@ -61,27 +61,27 @@ nav {
 }
 
 
-#nav-1 {
+#nav-aboutus {
 	@include nav-button ($menu-color-1, $menu-color-1-darker, $menu-color-1-trans, $menu-color-1-darker-trans, "../img/icon-aboutus.png");
 }
 
-#nav-2 {
+#nav-services {
 	@include nav-button ($menu-color-2, $menu-color-2-darker, $menu-color-2-trans, $menu-color-2-darker-trans, "../img/icon-services.png");
 }
 
-#nav-3 {
+#nav-vehicles {
 	@include nav-button ($menu-color-3, $menu-color-3-darker, $menu-color-3-trans, $menu-color-3-darker-trans, "../img/icon-van.png");
 }
 
-#nav-4 {
+#nav-customers {
 	@include nav-button ($menu-color-4, $menu-color-4-darker, $menu-color-4-trans, $menu-color-4-darker-trans, "../img/icon-customers.png");
 }
 
-#nav-5 {
+#nav-contact {
 	@include nav-button ($menu-color-5, $menu-color-5-darker, $menu-color-5-trans, $menu-color-5-darker-trans, "../img/icon-contact.png");
 }
 
-#nav-6 {
+#nav-news {
 	@include nav-button ($menu-color-6, $menu-color-6-darker, $menu-color-6-trans, $menu-color-6-darker-trans, "../img/icon-news.png");
 }
 
@@ -91,6 +91,11 @@ MEDIA QUERY
 ************************************************************************/
 
 @media (min-width: $media-breakpoint-medium) {
+
+	#nav-collapse {
+		height: $separator-height;
+		top: -$separator-height;
+	}
 
 	nav {
 		ul {
