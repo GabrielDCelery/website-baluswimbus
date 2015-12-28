@@ -72,6 +72,8 @@ function renderPostsMenu(arrayOfIds){
 
 	$postsMenu.html(htmlString);
 
+	events.emit('getPosts', 1);
+
 }
 
 
