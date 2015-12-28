@@ -45,9 +45,11 @@ CODE
   padding-right: $grid-gutter-small;
 }
 
+/*
 [class^='#{$grid-col-name}']:last-of-type {
   padding-right: 0;
 }
+*/
 
 @each $group in $grid-col-groups {
 
@@ -80,7 +82,6 @@ CODE
   [class^='#{$grid-col-name}'] {
     padding-right: $grid-gutter-medium;
   }
-
 
   @each $group in $grid-col-groups {
 

@@ -403,9 +403,11 @@ CODE
 [class^='col'] {
   padding-right: 5px; }
 
+/*
 [class^='col']:last-of-type {
-  padding-right: 0; }
-
+  padding-right: 0;
+}
+*/
 [class^='col-1-6'] {
   width: 16.66667%; }
 
