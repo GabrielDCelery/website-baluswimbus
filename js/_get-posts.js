@@ -54,7 +54,7 @@ function getPostsMenu(){
 function renderPostsMenu(arrayOfIds){
 
 	listOfIds = arrayOfIds;
-	console.log(listOfIds)
+
 	var numberOfPosts = listOfIds.length;
 	var numberOfPages = Math.ceil(numberOfPosts / numberOfPostsPerPage);
 
@@ -89,8 +89,6 @@ function getPosts(pageNumber){
 		}
 	}
 
-	console.log(arrayofIds)
-
 	$.ajax({
 		type: 'POST',
 		data: {data: arrayofIds},
@@ -102,8 +100,6 @@ function getPosts(pageNumber){
 }
 
 function renderPosts(postData){
-
-	console.log(postData);
 
 	var htmlString = '';
 
