@@ -25,7 +25,7 @@ EVENT BINDERS
 	$navCollapse.on('click', toggleMainMenu);
 	$introContent.on('click', toggleMainMenu);
 	$appWindow.on('scroll', scrollToggleMainMenu);
-	$appWindow.on('mousewheel', mousewheelToggleMainMenu);
+	$appWindow.on('wheel', mousewheelToggleMainMenu);
 
 	events.on('toggleMainMenu', toggleMainMenu);
 
