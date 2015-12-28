@@ -9,6 +9,7 @@ VARIABLES
 	var $appWindow = $(window);
 	var $main = $('main');
 	var $nav = $('nav');
+	var $introContent = $('#content-intro');
 	var $navCollapse = $('#nav-collapse');
 	var $navSeparatorImages = $('#nav-collapse img');
 	var $navSeparatorImagesArrowDown = $('#nav-collapse img:first-of-type');
@@ -22,6 +23,7 @@ EVENT BINDERS
 ********************************************************************/
 
 	$navCollapse.on('click', toggleMainMenu);
+	$introContent.on('click', toggleMainMenu);
 	$appWindow.on('scroll', scrollToggleMainMenu);
 	$appWindow.on('mousewheel', mousewheelToggleMainMenu);
 
