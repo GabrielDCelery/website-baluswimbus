@@ -28,7 +28,8 @@
 #content-services,
 #content-vehicles,
 #content-customers,
-#content-contact {
+#content-contact,
+#content-news {
 	height: 100%;
 	margin: 0 auto;
 
@@ -42,8 +43,17 @@
 #content-services,
 #content-vehicles,
 #content-customers,
-#content-contact {
+#content-contact,
+#content-news {
 	width: 90%;
+}
+
+#content-intro {
+	background-image: url("../img/index-photo.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+
 }
 
 #content-aboutus{
@@ -82,12 +92,53 @@
 		
 }
 
-#content-intro {
-	background-image: url("../img/index-photo.jpg");
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center center;
+#content-news {
 
+	.postsMenu-mobile {
+		display: block;
+		margin: 0 auto;
+		width: 100%;
+		padding: $content-padding / 2;
+		font-weight: bold;
+	}
+
+	.postsMenu-desktop {
+		display: none;
+		padding: $content-padding;
+
+		&::after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+
+		li {
+			float: left;
+			font-size: $base-font-size * 2;
+			font-weight: bold;
+			color: $post-menu-text-color;
+			background-color: $post-menu-background-color;
+			padding: ($content-padding / 2) $content-padding;
+			margin-right: $content-padding / 2;
+			border-radius: $content-padding / 2;
+			cursor: pointer;
+			transition: all 0.5s;
+
+			&:hover {
+				background-color: $post-menu-background-color-trans;
+			}
+		}
+
+		.selected {
+			background-color: $post-menu-background-color-trans;
+		}
+
+	}
+
+	.post-title {
+		font-size: $base-font-size * 2;
+	}
+		
 }
 
 @media (min-width: $media-breakpoint-medium) {
@@ -98,7 +149,8 @@
 
 	#content-aboutus,
 	#content-services,
-	#content-vehicles {
+	#content-vehicles,
+	#content-news {
 		width: 80%;
 	}
 
@@ -119,6 +171,19 @@
 		img {
 			max-width: 70%;
 		}
+	}
+
+
+	#content-news {
+
+		.postsMenu-mobile {
+			display: none;
+		}
+
+		.postsMenu-desktop {
+			display: block;
+		}
+			
 	}
 
 }

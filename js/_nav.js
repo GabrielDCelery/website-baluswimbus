@@ -41,6 +41,10 @@ FUNCTIONS
 			events.emit('mobileNavSelectContent');
 		}
 
+		if(selectedButtonId == 'news'){
+			events.emit('getPostsMenu');
+		}
+
 	}
 
 }());

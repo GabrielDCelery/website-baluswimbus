@@ -384,7 +384,7 @@ VARIABLES
 /**********************************************************************************
 CODE
 **********************************************************************************/
-*, *:before, *:after {
+*, *:after, *:before {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
@@ -544,6 +544,9 @@ CONTENT
 /*****************************************************************
 COLORS
 *****************************************************************/
+/*****************************************************************
+POSTS 
+*****************************************************************/
 /************************************************************************
 BASIC LAYOUT (MOBILE-FIRST)
 ************************************************************************/
@@ -620,7 +623,8 @@ header {
 #content-services,
 #content-vehicles,
 #content-customers,
-#content-contact {
+#content-contact,
+#content-news {
   height: 100%;
   margin: 0 auto; }
 
@@ -631,8 +635,15 @@ header {
 #content-services,
 #content-vehicles,
 #content-customers,
-#content-contact {
+#content-contact,
+#content-news {
   width: 90%; }
+
+#content-intro {
+  background-image: url("../img/index-photo.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center; }
 
 #content-aboutus img {
   max-width: 40%;
@@ -654,11 +665,36 @@ header {
   display: block;
   margin: 0px auto; }
 
-#content-intro {
-  background-image: url("../img/index-photo.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center; }
+#content-news .postsMenu-mobile {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  padding: 7.5px;
+  font-weight: bold; }
+#content-news .postsMenu-desktop {
+  display: none;
+  padding: 15px; }
+  #content-news .postsMenu-desktop::after {
+    content: "";
+    display: block;
+    clear: both; }
+  #content-news .postsMenu-desktop li {
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #5b8ba7;
+    padding: 7.5px 15px;
+    margin-right: 7.5px;
+    border-radius: 7.5px;
+    cursor: pointer;
+    transition: all 0.5s; }
+    #content-news .postsMenu-desktop li:hover {
+      background-color: #FFC784; }
+  #content-news .postsMenu-desktop .selected {
+    background-color: #FFC784; }
+#content-news .post-title {
+  font-size: 24px; }
 
 @media (min-width: 700px) {
   .table-cell {
@@ -666,7 +702,8 @@ header {
 
   #content-aboutus,
   #content-services,
-  #content-vehicles {
+  #content-vehicles,
+  #content-news {
     width: 80%; }
 
   #content-contact {
@@ -676,7 +713,12 @@ header {
     max-width: 100%; }
 
   #content-vehicles img {
-    max-width: 70%; } }
+    max-width: 70%; }
+
+  #content-news .postsMenu-mobile {
+    display: none; }
+  #content-news .postsMenu-desktop {
+    display: block; } }
 /************************************************************************
 NAV COLLAPSE BUTTON
 ************************************************************************/
