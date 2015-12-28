@@ -60,6 +60,7 @@
 
 		img {
 			width: 40%;
+			max-width: 40%;
 			border-radius: 100%;
 			display: block;
 			margin: 0px auto;
@@ -70,6 +71,7 @@
 
 		img {
 			width: 80%;
+			max-width: 80%;
 			border-radius: $content-padding / 2;
 			display: block;
 			margin: 0px auto;
@@ -84,7 +86,8 @@
 		}
 
 		img {
-			width: 30%;
+			width: auto;
+			max-width: 30%;
 			border-radius: $content-padding / 2;
 			display: block;
 			margin: 0px auto;
@@ -162,6 +165,7 @@
 
 		img {
     		width: 100%;
+    		max-width: 100%;
 		}
 	}
 
@@ -170,6 +174,7 @@
 
 		img {
 			width: 70%;
+			max-width: 70%;
 		}
 	}
 
