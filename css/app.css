@@ -648,13 +648,13 @@ header {
   background-position: center center; }
 
 #content-aboutus img {
-  max-width: 40%;
+  width: 40%;
   border-radius: 100%;
   display: block;
   margin: 0px auto; }
 
 #content-vehicles img {
-  max-width: 80%;
+  width: 80%;
   border-radius: 7.5px;
   display: block;
   margin: 0px auto; }
@@ -662,7 +662,7 @@ header {
 #content-customers div {
   text-align: center; }
 #content-customers img {
-  max-width: 30%;
+  width: 30%;
   border-radius: 7.5px;
   display: block;
   margin: 0px auto; }
@@ -712,10 +712,10 @@ header {
     width: 60%; }
 
   #content-aboutus img {
-    max-width: 100%; }
+    width: 100%; }
 
   #content-vehicles img {
-    max-width: 70%; }
+    width: 70%; }
 
   #content-news .postsMenu-mobile {
     display: none; }
