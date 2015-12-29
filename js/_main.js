@@ -45,7 +45,7 @@ FUNCTIONS
 			closeMainMenu();
 		}
 
-		if ($appWindow.scrollTop() != lastScrollTop && $appWindow.scrollTop() == 0){
+		if ($appWindow.scrollTop() != lastScrollTop && $appWindow.scrollTop() == 0 && $appWindow.width() > 700){
 			openMainMenu();
 		}
 

@@ -59,7 +59,7 @@ FUNCTIONS
 			closeMainMenu();
 		}
 
-		if ($appWindow.scrollTop() != lastScrollTop && $appWindow.scrollTop() == 0){
+		if ($appWindow.scrollTop() != lastScrollTop && $appWindow.scrollTop() == 0 && $appWindow.width() > 700){
 			openMainMenu();
 		}
 
@@ -144,6 +144,7 @@ FUNCTIONS
 		if($(window).width() < 700){
 			events.emit('toggleMainMenu');
 		}
+
 
 		if(selectedButtonId == 'news'){
 			events.emit('getPostsMenu');

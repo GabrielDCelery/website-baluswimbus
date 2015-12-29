@@ -44,6 +44,7 @@ FUNCTIONS
 			events.emit('toggleMainMenu');
 		}
 
+
 		if(selectedButtonId == 'news'){
 			events.emit('getPostsMenu');
 		}
