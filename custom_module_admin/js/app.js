@@ -144,7 +144,7 @@ VARIABLES
 **********************************************************************************/
 
 	$scope.display = {
-		login: true,
+		login: false,
 		content: false
 	};
 
