@@ -1,0 +1,24 @@
+#login-admin {
+	width: 90%;
+	height: 100%;
+	margin: 0 auto;
+
+	label,
+	input {
+		display: block;
+		margin: 0 auto;
+		text-align: center;
+		padding: $content-padding;
+		margin-top: $content-padding;
+	}
+}
+
+@media (min-width: $media-breakpoint-medium) {
+
+	label,
+	input {
+		width: 50%;
+	}
+
+
+}

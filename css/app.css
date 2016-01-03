@@ -896,6 +896,22 @@ MEDIA QUERY
     content: "";
     display: block;
     padding-top: 100%; } }
+#login-admin {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto; }
+  #login-admin label,
+  #login-admin input {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding: 15px;
+    margin-top: 15px; }
+
+@media (min-width: 700px) {
+  label,
+  input {
+    width: 50%; } }
 body {
   font-size: 12px;
   font-family: "Arial"; }

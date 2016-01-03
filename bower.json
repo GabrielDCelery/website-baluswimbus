@@ -1,0 +1,23 @@
+{
+  "name": "website-baluswimbus",
+  "description": "Website for baluswimbus",
+  "main": "index.js",
+  "authors": [
+    "Gabriel D. Celery"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/GabrielDCelery/website-baluswimbus",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-cookies": "~1.4.8"
+  }
+}

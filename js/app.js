@@ -288,3 +288,4 @@ function renderPosts(postData){
 }
 
 }());
+
