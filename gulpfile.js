@@ -65,8 +65,7 @@ gulp.task('concatJs', function(){
 			'js/_eventemitter.js',
 			'js/_main.js',
 			'js/_nav.js',
-			'js/_get-posts.js',
-			'custom_module_admin/js/app.js'
+			'js/_get-posts.js'
 		]
 	)
 	.pipe(concat('app.js'))
