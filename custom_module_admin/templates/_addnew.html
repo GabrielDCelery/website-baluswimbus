@@ -1,1 +1,67 @@
-<p>TODO add new</p>
+<div id="textEditorContainer">
+	<div id="textEditorFunctions" class="row">
+		<div class="col-1-6">
+			<div class="functionButton" id="functionButton-bold">
+				<img src="img/svg-bold-2.svg">
+			</div>
+		</div>
+		<div class="col-1-6">
+			<div class="functionButton" id="functionButton-italic">
+				<img src="img/svg-italic.svg">
+			</div>
+		</div>
+		<div class="col-1-6">
+			<div class="functionButton" id="functionButton-underline">
+				<img src="img/svg-underline.svg">
+			</div>
+		</div>
+		<div class="col-1-6">
+			<div class="functionButton" id="functionButton-justifyLeft">
+				<img src="img/svg-align-left.svg">
+			</div>
+		</div>
+		<div class="col-1-6">
+			<div class="functionButton" id="functionButton-justifyCenter">
+				<img src="img/svg-align-center.svg">
+			</div>
+		</div>
+		<div class="col-1-6">
+			<div class="functionButton" id="functionButton-justifyRight">
+				<img src="img/svg-align-right.svg">
+			</div>
+		</div>
+		<div class="col-3-6">
+			<select class="functionSelect" id="functionSelect-fontname">
+				<option selected disabled>Font-style</option>
+				<option>Arial</option>
+				<option>Calibri</option>
+				<option>Times New Roman</option>
+			</select>
+		</div>
+		<div class="col-3-6">
+			<select class="functionSelect" id="functionSelect-fontSize">
+				<option selected disabled>Font-size</option>
+				<option value="1">10px</option>
+				<option value="2">13px</option>
+				<option value="3">16px</option>
+				<option value="4">18px</option>
+				<option value="5">24px</option>
+				<option value="6">32px</option>
+				<option value="7">48px</option>
+			</select>
+		</div>
+	</div>
+
+	<div id="textEditorContent" contenteditable="true" class="col-6-6">
+		<p style="text-align: center;"><font face="null">wwqgqwerghwethtjwrj jezjzjketjketk</font></p><p style="text-align: left;"><font face="null">zkk<b>krzk</b></font></p>
+	</div>
+
+	<div id="textEditorDatabase" class="row">
+		<div class="col-3-6">
+			<button id="textEditorSaveIntoDatabase">SAVE</button>
+		</div>
+		<div class="col-3-6">
+			<button id="textEditorSaveAsDraft">DRAFT</button>
+		</div>
+	</div>
+</div>

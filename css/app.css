@@ -549,6 +549,9 @@ COLORS
 /*****************************************************************
 POSTS 
 *****************************************************************/
+/*****************************************************************
+ADMIN AREA
+*****************************************************************/
 /************************************************************************
 BASIC LAYOUT (MOBILE-FIRST)
 ************************************************************************/
@@ -915,6 +918,57 @@ MEDIA QUERY
   label,
   input {
     width: 50%; } }
+#content-admin .list-post {
+  background-color: #cfdde5;
+  margin-bottom: 7.5px; }
+  #content-admin .list-post [class^='col-'] {
+    padding: 7.5px; }
+  #content-admin .list-post .clickable {
+    text-align: center;
+    cursor: pointer; }
+    #content-admin .list-post .clickable:hover {
+      background-color: #FFC884; }
+
+#textEditorContainer {
+  margin: 7.5px auto;
+  max-width: 100%; }
+
+#textEditorDatabase button {
+  width: 100%;
+  padding: 1em;
+  font-size: 1em; }
+
+#textEditorFunctions .functionButton,
+#textEditorFunctions .functionSelect {
+  margin: 0.5em 0;
+  border: solid 1px #000;
+  padding: 0.4em 0;
+  cursor: pointer; }
+#textEditorFunctions .functionButton {
+  background-color: #ddd;
+  text-align: center; }
+#textEditorFunctions .clicked {
+  background-color: #aaaaaa; }
+#textEditorFunctions img {
+  max-width: 90%;
+  max-height: 1.5em; }
+#textEditorFunctions select {
+  width: 100%;
+  font-size: 1em; }
+
+#textEditorContent {
+  min-height: 300px;
+  border: solid 1px #000;
+  margin: 0.5em 0;
+  padding: 1em; }
+
+@media (min-width: 700px) {
+  #content-admin .list-post [class^='col-'] {
+    padding: 15px; }
+
+  #textEditorContainer {
+    margin: 0 auto;
+    max-width: 70%; } }
 body {
   font-size: 12px;
   font-family: "Arial"; }
