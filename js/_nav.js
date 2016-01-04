@@ -7,7 +7,7 @@ VARIABLES
 ********************************************************************/
 
 	var $appWindow = $('window');
-	var $navButtons = $('nav li div[id^="nav-"]');
+	var $navButtons = $('#mainPageNavBar li div[id^="nav-"]');
 	var $contentBoxes = $('main div[id^="content-"]');
 
 /********************************************************************
