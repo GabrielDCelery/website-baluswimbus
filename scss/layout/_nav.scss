@@ -45,7 +45,7 @@ nav {
 
 		@for $i from 1 through $group {
 			[class^='#{$grid-col-name}-#{$i}-#{$group}']{
-				height: 100% / $group;
+				height: 100% / $group * $i;
 			}
 		}
 	}
