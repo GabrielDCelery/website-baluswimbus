@@ -11,12 +11,12 @@
 	<script type="text/javascript" src="custom_module_admin/js/app.js"></script>
 
 </head>
-<body ng-app='adminModule'>
+<body ng-app='adminModule' ng-controller='authCtrl'>
+
 	<header>
 	</header>
 
-
-	<main ng-controller='authCtrl'>
+	<main>
 <!-- LOGIN -->
 		<div id="login-admin" ng-show="display.login">
 			<form>
@@ -35,6 +35,24 @@
 
 	</main>
 
+	<nav  ng-show="display.content">
+		<div id="nav-collapse">
+			<img src="img/arrow-down.png">
+			<img src="img/arrow-up.png" style="display:none">
+		</div>
+		<ul class="row">
+			<li class="col-3-6--s">
+				<div id="nav-aboutus">
+					<div class="nav-text">MEGLÉVŐ BEJEGYZÉSEK</div>
+				</div>
+			</li>
+			<li class="col-3-6--s">
+				<div id="nav-services">
+					<div class="nav-text">ÚJ HOZZÁADÁSA</div>
+				</div>
+			</li>
+		</ul>
+	</nav>
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
