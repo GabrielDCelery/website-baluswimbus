@@ -23,6 +23,13 @@
 	}
 }
 
+#adminNavBar {
+	a {
+		text-decoration: none;
+		color: $nav-text-color;
+	}
+}
+
 #textEditorContainer {
 	margin: ($content-padding / 2) auto;
 	max-width: 100%;

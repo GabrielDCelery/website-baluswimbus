@@ -929,6 +929,10 @@ MEDIA QUERY
     #content-admin .list-post .clickable:hover {
       background-color: #FFC884; }
 
+#adminNavBar a {
+  text-decoration: none;
+  color: #fff; }
+
 #textEditorContainer {
   margin: 7.5px auto;
   max-width: 100%; }
