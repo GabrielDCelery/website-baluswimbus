@@ -42,8 +42,15 @@ FUNCTIONS
 		var encodedPassword = passwordEncryption.encode(password);
 		passwordValidation.check(username, encodedPassword, setLoginStatus);
 
-		$cookies.put('loginUser', username);
-		$cookies.put('loginPassword', password);
+		$cookies.put('loginUser', $scope.username);
+		$cookies.put('loginPassword', $scope.password);
+	}
+
+	function logout(){
+		$scope.display.login = true;
+		$scope.display.content = false;
+		$cookies.remove('loginUser');
+		$cookies.remove('loginPassword');	
 	}
 
 /**********************************************************************************
@@ -54,6 +61,7 @@ LOGIN
 
 	$scope.login = login;
 
+	$scope.logout = logout;
 
 }]);
 
