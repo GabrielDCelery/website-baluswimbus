@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="css/app.css">
 
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
 	<script src="bower_components/angular-cookies/angular-cookies.js"></script>
 	<script type="text/javascript" src="custom_module_admin/js/app.js"></script>
 
@@ -27,15 +28,18 @@
 				<input type="submit" value="BEJELENTKEZÉS" ng-click="login(username, password)"/>
 			</form>
 		</div>
-		<div ng-show="display.content">
-			<p>content</p>
-			<button ng-click="logout()">REMOVE COOKIE</button>
 
+<!-- CONTENT -->
+		<div class="table" id="content-admin">
+			<div class="table-cell">
+				<div ng-view ng-show="display.content"></div>
+			</div>
 		</div>
 
 	</main>
 
-	<nav  ng-show="display.content">
+<!-- NAV -->
+	<nav ng-show="display.content">
 		<div id="nav-collapse">
 			<img src="img/arrow-down.png">
 			<img src="img/arrow-up.png" style="display:none">

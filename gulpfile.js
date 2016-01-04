@@ -78,7 +78,10 @@ gulp.task('concatJsCustomModuleAdmin', function(){
 		[
 			'custom_module_admin/js/_module_app.js',
 			'custom_module_admin/js/_factory_auth.js',
-			'custom_module_admin/js/_controller_auth.js'
+			'custom_module_admin/js/_controller_auth.js',
+			'custom_module_admin/js/_controller_posts_addnew.js',
+			'custom_module_admin/js/_controller_posts_detailed.js',
+			'custom_module_admin/js/_controller_posts_list.js'
 		]
 	)
 	.pipe(concat('app.js'))

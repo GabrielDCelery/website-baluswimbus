@@ -1,7 +1,29 @@
 var adminModule = angular.module('adminModule', [
+	'ngRoute',
 	'authController',
-	'authFactory'
+	'authFactory',
+	'postListController',
+	'addNewPostController',
+	'detailedPostController'
 ]);
+
+
+adminModule.config(['$routeProvider', function($routeProvider){
+
+	$routeProvider.when('/', {
+		templateUrl: 'custom_module_admin/templates/_main.html',
+		controller: 'postListCtrl'
+	}).when('/addnew', {
+		templateUrl: 'custom_module_admin/templates/_addnew.html',
+		controller: 'addNewPostCtrl'
+	}).when('/:id', {
+		templateUrl: 'custom_module_admin/templates/_post.html',
+		controller: 'detailedPostCtrl'
+	}).otherwise({
+		redirectTo: '/'
+	})
+
+}]);
 
 var authFactory = angular.module('authFactory', []);
 
@@ -200,5 +222,26 @@ LOGIN
 
 	$scope.logout = logout;
 
+}]);
+
+
+var addNewPostController = angular.module('addNewPostController', []);
+
+addNewPostController.controller('addNewPostCtrl', ['$scope', function($scope){
+
+}]);
+
+
+var detailedPostController = angular.module('detailedPostController', []);
+
+detailedPostController.controller('detailedPostCtrl', ['$scope', function($scope){
+	
+}]);
+
+
+var postListController = angular.module('postListController', []);
+
+postListController.controller('postListCtrl', ['$scope', function($scope){
+	
 }]);
 
