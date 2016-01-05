@@ -4,7 +4,8 @@ var adminModule = angular.module('adminModule', [
 	'authFactory',
 	'postListController',
 	'addNewPostController',
-	'detailedPostController'
+	'detailedPostController',
+	'postsFactory'
 ]);
 
 
@@ -225,6 +226,48 @@ LOGIN
 }]);
 
 
+var postsFactory = angular.module('postsFactory', []);
+
+/**********************************************************************************
+FACTORY - VALIDATING PASSWORD
+**********************************************************************************/
+
+postsFactory.factory('connectToPostsDatabase', ['$http', function($http){
+
+	function getList(callback){
+
+		$http({
+			method: 'GET',
+			url: 'custom_module_admin/php/get-list-of-posts.php'
+		}).then(callback);
+
+	}
+
+	function getPosts(arrayOfIds, callback){
+
+		$http({
+			method: 'POST',
+			url: 'custom_module_admin/php/get-posts.php',
+			data: {data: arrayOfIds}
+		}).then(callback);
+
+	}
+
+	function deletePost(id, callback){
+		$http({
+			method: 'POST',
+			url: 'custom_module_admin/php/delete-post.php',
+			data: {data: id}
+		}).then(callback);
+	}
+
+	return {
+		getList: getList,
+		getPosts: getPosts,
+		deletePost: deletePost
+	}
+
+}]);
 var addNewPostController = angular.module('addNewPostController', []);
 
 addNewPostController.controller('addNewPostCtrl', ['$scope', function($scope){
@@ -241,7 +284,117 @@ detailedPostController.controller('detailedPostCtrl', ['$scope', function($scope
 
 var postListController = angular.module('postListController', []);
 
-postListController.controller('postListCtrl', ['$scope', function($scope){
+postListController.controller('postListCtrl', [
+	'$scope', 
+	'connectToPostsDatabase', 
+	function(
+		$scope, 
+		connectToPostsDatabase
+	){
+
+/**********************************************************************************
+VARIABLES
+**********************************************************************************/
+
+	$scope.listOfIds = [];
+	$scope.numberOfPostsPerPage = 3;
 	
+	$scope.listOfPages = [];
+	$scope.listOfPosts = [];
+
+	$scope.selectedPage;
+
+/**********************************************************************************
+PURE FUNCTIONS ENCAPSULATING REPEATED CODE
+**********************************************************************************/
+
+	function calculateMenu(listOfIds, numberOfPostsPerPage){
+
+		var numberOfPosts = listOfIds.length;
+		var numberOfPages = Math.ceil(numberOfPosts / numberOfPostsPerPage);
+		var listOfPages = [];
+		for(var i = 1; i <= numberOfPages; i++){
+			listOfPages.push(i);
+		}
+
+		return listOfPages;
+	}
+
+	function calculatePosts(listOfIds, pageNumber, numberOfPostsPerPage){
+
+		var arrayOfIds = [];
+		var firstPost = (pageNumber - 1) * numberOfPostsPerPage;
+		var lastPost = (pageNumber - 1) * numberOfPostsPerPage + numberOfPostsPerPage;
+
+		for(var i = firstPost; i < lastPost; i++){
+			if(typeof(listOfIds[i]) !== 'undefined'){
+				arrayOfIds.push(listOfIds[i].id);
+			}
+		}
+
+		return arrayOfIds;
+	}
+
+/**********************************************************************************
+CONTROLLER DEPENDENT FUNCTIONS ENCAPSULATING REPEATED CODE
+**********************************************************************************/
+
+	function renderPosts(pageNumber){
+
+		$scope.selectedPage = pageNumber;
+
+		var arrayOfIds = calculatePosts($scope.listOfIds, $scope.selectedPage, $scope.numberOfPostsPerPage);
+
+		connectToPostsDatabase.getPosts(arrayOfIds, function (response){
+			$scope.listOfPosts = response.data;
+		});
+
+	}
+
+	function renderOpeningPage(){
+
+		connectToPostsDatabase.getList(function (response){
+
+			$scope.listOfIds = response.data;
+			$scope.listOfPages = calculateMenu($scope.listOfIds, $scope.numberOfPostsPerPage);
+
+			renderPosts(1);
+		
+		});
+	}
+
+/**********************************************************************************
+FUNCTIONS ON THE HTML PAGE
+**********************************************************************************/
+
+	$scope.switchPage = function(pageNumber){
+
+		renderPosts(pageNumber);
+
+	}
+
+	$scope.deletePost = function(id){
+
+		var confirmDelete = confirm("Biztosan törölni akarja a bejegyzést?");
+
+		if(confirmDelete){
+
+			connectToPostsDatabase.deletePost(id, function(response){
+
+				alert(response.data);
+				renderOpeningPage();
+
+			});
+
+		}
+
+	}
+
+/**********************************************************************************
+DEFAULT FUNCTION INITIATED UPON LOADING
+**********************************************************************************/
+
+	renderOpeningPage();
+
 }]);
 

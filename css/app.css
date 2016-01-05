@@ -375,6 +375,10 @@ ul {
   margin: 0;
   padding: 0; }
 
+a {
+  text-decoration: none;
+  color: #000; }
+
 /**********************************************************************************
 MEDIA QUERIES
 **********************************************************************************/
@@ -675,20 +679,24 @@ header {
   display: block;
   margin: 0px auto; }
 
-#content-news .postsMenu-mobile {
+#content-news .postsMenu-mobile,
+#content-admin .postsMenu-mobile {
   display: block;
   margin: 0 auto;
   width: 100%;
   padding: 7.5px;
   font-weight: bold; }
-#content-news .postsMenu-desktop {
+#content-news .postsMenu-desktop,
+#content-admin .postsMenu-desktop {
   display: none;
   padding: 15px; }
-  #content-news .postsMenu-desktop::after {
+  #content-news .postsMenu-desktop::after,
+  #content-admin .postsMenu-desktop::after {
     content: "";
     display: block;
     clear: both; }
-  #content-news .postsMenu-desktop li {
+  #content-news .postsMenu-desktop li,
+  #content-admin .postsMenu-desktop li {
     float: left;
     font-size: 24px;
     font-weight: bold;
@@ -699,11 +707,14 @@ header {
     border-radius: 7.5px;
     cursor: pointer;
     transition: all 0.5s; }
-    #content-news .postsMenu-desktop li:hover {
+    #content-news .postsMenu-desktop li:hover,
+    #content-admin .postsMenu-desktop li:hover {
       background-color: #FFC784; }
-  #content-news .postsMenu-desktop .selected {
+  #content-news .postsMenu-desktop .selected,
+  #content-admin .postsMenu-desktop .selected {
     background-color: #FFC784; }
-#content-news .post-title {
+#content-news .post-title,
+#content-admin .post-title {
   font-size: 24px; }
 
 @media (min-width: 700px) {
@@ -728,9 +739,11 @@ header {
     width: 70%;
     max-width: 70%; }
 
-  #content-news .postsMenu-mobile {
+  #content-news .postsMenu-mobile,
+  #content-admin .postsMenu-mobile {
     display: none; }
-  #content-news .postsMenu-desktop {
+  #content-news .postsMenu-desktop,
+  #content-admin .postsMenu-desktop {
     display: block; } }
 /************************************************************************
 NAV COLLAPSE BUTTON
@@ -930,7 +943,6 @@ MEDIA QUERY
       background-color: #FFC884; }
 
 #adminNavBar a {
-  text-decoration: none;
   color: #fff; }
 
 #textEditorContainer {

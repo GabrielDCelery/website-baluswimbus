@@ -4,7 +4,8 @@ var adminModule = angular.module('adminModule', [
 	'authFactory',
 	'postListController',
 	'addNewPostController',
-	'detailedPostController'
+	'detailedPostController',
+	'postsFactory'
 ]);
 
 
