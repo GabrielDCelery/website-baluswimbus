@@ -18,7 +18,7 @@
 		<div>
 			BALUSWIMBUSZ
 		</div>
-		<div class="loginPanel" ng-show="display.content">
+		<div class="loginPanel" ng-show="display.content" ng-cloak>
 			{{username}}
 			<button ng-click="logout()">KILÉP</button>
 		</div>
@@ -26,7 +26,7 @@
 
 	<main>
 <!-- LOGIN -->
-		<div id="login-admin" ng-show="display.login">
+		<div id="login-admin" ng-show="display.login" ng-cloak>
 			<form>
 				<label for="username">FELHASZNLÓ</label>
 				<input type="text" ng-model="username" id="username" placeholder="FELHASZNÁLÓ" />
@@ -39,14 +39,14 @@
 <!-- CONTENT -->
 		<div class="table" id="content-admin">
 			<div class="table-cell">
-				<div ng-view ng-show="display.content"></div>
+				<div ng-view ng-show="display.content" ng-cloak></div>
 			</div>
 		</div>
 
 	</main>
 
 <!-- NAV -->
-	<nav id="adminNavBar" ng-show="display.content">
+	<nav id="adminNavBar" ng-show="display.content" ng-cloak>
 		<div id="nav-collapse">
 			<img src="img/arrow-down.png">
 			<img src="img/arrow-up.png" style="display:none">
