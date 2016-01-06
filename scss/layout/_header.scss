@@ -1,3 +1,27 @@
 header {
 	background-color: $frame-color;
+	color: $post-menu-text-color;
+
+	display: table;
+
+	div {
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+	div:first-of-type {
+		padding-left: $content-padding;
+	}
+
+	.loginPanel {
+		text-align: right;
+		padding-right: $content-padding;
+
+		button {
+			color: #000;
+		}
+
+	}
+
+
 }

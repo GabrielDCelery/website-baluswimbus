@@ -15,6 +15,13 @@
 <body ng-app='adminModule' ng-controller='authCtrl'>
 
 	<header>
+		<div>
+			BALUSWIMBUSZ
+		</div>
+		<div class="loginPanel" ng-show="display.content">
+			{{username}}
+			<button ng-click="logout()">KILÉP</button>
+		</div>
 	</header>
 
 	<main>

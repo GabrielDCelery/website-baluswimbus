@@ -608,7 +608,19 @@ MEDIA QUERY
     height: 30%;
     bottom: 0%; } }
 header {
-  background-color: #5b8ba7; }
+  background-color: #5b8ba7;
+  color: #fff;
+  display: table; }
+  header div {
+    display: table-cell;
+    vertical-align: middle; }
+  header div:first-of-type {
+    padding-left: 15px; }
+  header .loginPanel {
+    text-align: right;
+    padding-right: 15px; }
+    header .loginPanel button {
+      color: #000; }
 
 [id^='content-'] {
   padding: 30px 0; }
