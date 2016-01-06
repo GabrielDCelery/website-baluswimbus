@@ -74,6 +74,16 @@
 
 }
 
+#textEditorHeader {
+	.functionInput {
+		width: 100%;
+		margin: 0.5em 0;
+		border: solid 1px #000;
+		padding: 0.4em;
+		cursor: pointer;	
+	}
+}
+
 #textEditorContent {
 	min-height: 300px;
 	border: solid 1px #000;

@@ -15,6 +15,7 @@ $query_string =
 	$post_id . ", " .
 	$post_title . ", " .
 	$post_date . ", " .
+	$post_content . ", " .
 	$post_status . 
 	" FROM " . $tablename_posts . 
 	" WHERE " . $post_id . " = " . $array_of_ids[0];
