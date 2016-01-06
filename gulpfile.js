@@ -65,11 +65,30 @@ gulp.task('concatJs', function(){
 			'js/_eventemitter.js',
 			'js/_main.js',
 			'js/_nav.js',
-			'js/_get-posts.js'
+			'js/_get-posts.js',
+			'js/_texteditor.js'
 		]
 	)
 	.pipe(concat('app.js'))
     .pipe(gulp.dest('js'))
+    .pipe(connect.reload());
+});
+
+gulp.task('concatJsCustomModuleAdmin', function(){
+	return gulp.src(
+		[
+			'custom_module_admin/js/_module_app.js',
+			'custom_module_admin/js/_factory_auth.js',
+			'custom_module_admin/js/_controller_auth.js',
+			'custom_module_admin/js/_factory_posts.js',
+			'custom_module_admin/js/_factory_texteditor.js',
+			'custom_module_admin/js/_controller_posts_addnew.js',
+			'custom_module_admin/js/_controller_posts_detailed.js',
+			'custom_module_admin/js/_controller_posts_list.js'
+		]
+	)
+	.pipe(concat('app.js'))
+    .pipe(gulp.dest('custom_module_admin/js'))
     .pipe(connect.reload());
 });
 
@@ -104,6 +123,7 @@ gulp.task('watch', function (){
 	gulp.watch('*.html', ['html']);
 	gulp.watch('scss/**/*.scss', ['compileSass']);
 	gulp.watch('js/**/*.js', ['concatJs']);
+	gulp.watch('custom_module_admin/js/**/*.js', ['concatJsCustomModuleAdmin']);
 });
 
 /*****************************************************************************************
@@ -138,6 +158,7 @@ gulp.task('default',
 		'connectDev',
 		'compileSass',
 		'concatJs',
+		'concatJsCustomModuleAdmin',
 		'watch'
 	]
 );

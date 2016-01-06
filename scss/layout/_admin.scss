@@ -1,0 +1,115 @@
+#content-admin {
+
+	.list-post {
+		background-color: lighten($frame-color, 35);
+		margin-bottom: $content-padding / 2;
+
+		[class^='col-']{
+			padding: $content-padding / 2;	
+
+		}
+
+		.clickable {
+
+			text-align: center;
+			cursor: pointer;
+
+			&:hover {
+				background-color: $frame-color-trans;
+			}
+
+		}
+
+	}
+}
+
+#adminNavBar {
+	a {
+		color: $nav-text-color;
+	}
+}
+
+#textEditorContainer {
+	margin: ($content-padding / 2) auto;
+	max-width: 100%;
+
+}
+
+#textEditorDatabase {
+	button {
+		width: 100%;
+		padding: 1em;
+		font-size: 1em;
+	}
+}
+
+#textEditorFunctions {
+
+	.functionButton,
+	.functionSelect {
+		margin: 0.5em 0;
+		border: solid 1px #000;
+		padding: 0.4em 0;
+		cursor: pointer;
+	}
+
+	.functionButton {
+		background-color: $buttonColor;
+		text-align: center;
+	}
+
+	.clicked {
+		background-color: darken($buttonColor, 20);
+	}
+
+	img {
+		max-width: 90%;
+		max-height: 1.5em;
+	}
+
+	select {
+		width: 100%;
+		font-size: 1em;
+	}
+
+}
+
+#textEditorHeader {
+	.functionInput {
+		width: 100%;
+		margin: 0.5em 0;
+		border: solid 1px #000;
+		padding: 0.4em;
+		cursor: pointer;	
+	}
+}
+
+#textEditorContent {
+	min-height: 300px;
+	border: solid 1px #000;
+	margin: 0.5em 0;
+	padding: 1em;
+}
+
+@media (min-width: $media-breakpoint-medium) {
+
+	#content-admin {
+
+		.list-post {
+
+			[class^='col-']{
+				padding: $content-padding;		
+			}
+		}
+
+	}
+
+
+	#textEditorContainer {
+		margin: 0 auto;
+		max-width: 70%;
+
+	}
+
+
+}

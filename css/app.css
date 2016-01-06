@@ -375,6 +375,10 @@ ul {
   margin: 0;
   padding: 0; }
 
+a {
+  text-decoration: none;
+  color: #000; }
+
 /**********************************************************************************
 MEDIA QUERIES
 **********************************************************************************/
@@ -549,6 +553,9 @@ COLORS
 /*****************************************************************
 POSTS 
 *****************************************************************/
+/*****************************************************************
+ADMIN AREA
+*****************************************************************/
 /************************************************************************
 BASIC LAYOUT (MOBILE-FIRST)
 ************************************************************************/
@@ -626,7 +633,8 @@ header {
 #content-vehicles,
 #content-customers,
 #content-contact,
-#content-news {
+#content-news,
+#content-admin {
   height: 100%;
   margin: 0 auto; }
 
@@ -638,7 +646,8 @@ header {
 #content-vehicles,
 #content-customers,
 #content-contact,
-#content-news {
+#content-news,
+#content-admin {
   width: 90%; }
 
 #content-intro {
@@ -670,20 +679,24 @@ header {
   display: block;
   margin: 0px auto; }
 
-#content-news .postsMenu-mobile {
+#content-news .postsMenu-mobile,
+#content-admin .postsMenu-mobile {
   display: block;
   margin: 0 auto;
   width: 100%;
   padding: 7.5px;
   font-weight: bold; }
-#content-news .postsMenu-desktop {
+#content-news .postsMenu-desktop,
+#content-admin .postsMenu-desktop {
   display: none;
   padding: 15px; }
-  #content-news .postsMenu-desktop::after {
+  #content-news .postsMenu-desktop::after,
+  #content-admin .postsMenu-desktop::after {
     content: "";
     display: block;
     clear: both; }
-  #content-news .postsMenu-desktop li {
+  #content-news .postsMenu-desktop li,
+  #content-admin .postsMenu-desktop li {
     float: left;
     font-size: 24px;
     font-weight: bold;
@@ -694,11 +707,14 @@ header {
     border-radius: 7.5px;
     cursor: pointer;
     transition: all 0.5s; }
-    #content-news .postsMenu-desktop li:hover {
+    #content-news .postsMenu-desktop li:hover,
+    #content-admin .postsMenu-desktop li:hover {
       background-color: #FFC784; }
-  #content-news .postsMenu-desktop .selected {
+  #content-news .postsMenu-desktop .selected,
+  #content-admin .postsMenu-desktop .selected {
     background-color: #FFC784; }
-#content-news .post-title {
+#content-news .post-title,
+#content-admin .post-title {
   font-size: 24px; }
 
 @media (min-width: 700px) {
@@ -708,7 +724,8 @@ header {
   #content-aboutus,
   #content-services,
   #content-vehicles,
-  #content-news {
+  #content-news,
+  #content-admin {
     width: 80%; }
 
   #content-contact {
@@ -722,9 +739,11 @@ header {
     width: 70%;
     max-width: 70%; }
 
-  #content-news .postsMenu-mobile {
+  #content-news .postsMenu-mobile,
+  #content-admin .postsMenu-mobile {
     display: none; }
-  #content-news .postsMenu-desktop {
+  #content-news .postsMenu-desktop,
+  #content-admin .postsMenu-desktop {
     display: block; } }
 /************************************************************************
 NAV COLLAPSE BUTTON
@@ -896,6 +915,83 @@ MEDIA QUERY
     content: "";
     display: block;
     padding-top: 100%; } }
+#login-admin {
+  width: 90%;
+  height: 100%;
+  margin: 0 auto; }
+  #login-admin label,
+  #login-admin input {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding: 15px;
+    margin-top: 15px; }
+
+@media (min-width: 700px) {
+  label,
+  input {
+    width: 50%; } }
+#content-admin .list-post {
+  background-color: #cfdde5;
+  margin-bottom: 7.5px; }
+  #content-admin .list-post [class^='col-'] {
+    padding: 7.5px; }
+  #content-admin .list-post .clickable {
+    text-align: center;
+    cursor: pointer; }
+    #content-admin .list-post .clickable:hover {
+      background-color: #FFC884; }
+
+#adminNavBar a {
+  color: #fff; }
+
+#textEditorContainer {
+  margin: 7.5px auto;
+  max-width: 100%; }
+
+#textEditorDatabase button {
+  width: 100%;
+  padding: 1em;
+  font-size: 1em; }
+
+#textEditorFunctions .functionButton,
+#textEditorFunctions .functionSelect {
+  margin: 0.5em 0;
+  border: solid 1px #000;
+  padding: 0.4em 0;
+  cursor: pointer; }
+#textEditorFunctions .functionButton {
+  background-color: #ddd;
+  text-align: center; }
+#textEditorFunctions .clicked {
+  background-color: #aaaaaa; }
+#textEditorFunctions img {
+  max-width: 90%;
+  max-height: 1.5em; }
+#textEditorFunctions select {
+  width: 100%;
+  font-size: 1em; }
+
+#textEditorHeader .functionInput {
+  width: 100%;
+  margin: 0.5em 0;
+  border: solid 1px #000;
+  padding: 0.4em;
+  cursor: pointer; }
+
+#textEditorContent {
+  min-height: 300px;
+  border: solid 1px #000;
+  margin: 0.5em 0;
+  padding: 1em; }
+
+@media (min-width: 700px) {
+  #content-admin .list-post [class^='col-'] {
+    padding: 15px; }
+
+  #textEditorContainer {
+    margin: 0 auto;
+    max-width: 70%; } }
 body {
   font-size: 12px;
   font-family: "Arial"; }
