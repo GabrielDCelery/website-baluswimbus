@@ -32,7 +32,7 @@
 		</div>
 		<div class="col-3-6">
 			<select class="functionSelect" id="functionSelect-fontname">
-				<option selected disabled>Font-style</option>
+				<option selected disabled>Betűtípus</option>
 				<option>Arial</option>
 				<option>Calibri</option>
 				<option>Times New Roman</option>
@@ -40,7 +40,7 @@
 		</div>
 		<div class="col-3-6">
 			<select class="functionSelect" id="functionSelect-fontSize">
-				<option selected disabled>Font-size</option>
+				<option selected disabled>Betűméret</option>
 				<option value="1">10px</option>
 				<option value="2">13px</option>
 				<option value="3">16px</option>
@@ -50,18 +50,35 @@
 				<option value="7">48px</option>
 			</select>
 		</div>
+
+	</div>
+
+	<div id="textEditorHeader" class="row">
+		<div class="col-6-6">Bejegyzés címe</div>
+		<div class="col-6-6">
+			<input class="functionInput" type="text" ng-model="post.post_title">
+		</div>
+
+		<div class="col-3-6">Bejegyzés dátuma</div>
+		<div class="col-3-6">
+			<input class="functionInput" type="date" ng-model="post.post_date">
+		</div>
+		<div class="col-3-6">Bejegyzés státusza</div>
+		<div class="col3-6">
+			{{post.post_status}}
+		</div>
 	</div>
 
 	<div id="textEditorContent" contenteditable="true" class="col-6-6">
-		<p style="text-align: center;"><font face="null">wwqgqwerghwethtjwrj jezjzjketjketk</font></p><p style="text-align: left;"><font face="null">zkk<b>krzk</b></font></p>
+		<div style="text-align: center;"><font face="null">Ide írd a szöveget...</font></div>
 	</div>
 
 	<div id="textEditorDatabase" class="row">
 		<div class="col-3-6">
-			<button id="textEditorSaveIntoDatabase">SAVE</button>
+			<button ng-click="saveIntoDatabase('active')">PUBLIKÁL</button>
 		</div>
 		<div class="col-3-6">
-			<button id="textEditorSaveAsDraft">DRAFT</button>
+			<button ng-click="saveIntoDatabase('draft')">VÁZLAT</button>
 		</div>
 	</div>
 </div>

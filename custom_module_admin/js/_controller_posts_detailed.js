@@ -34,7 +34,8 @@ CONTROLLER DEPENDENT FUNCTIONS ENCAPSULATING REPEATED CODE
 	function convertTextForEditing(input){
 
 		var editableText = new textEditor.HtmlString(input);
-		editableText.replaceAll('<p></p>', '<div><br></div>')
+		editableText.replaceAll('&quot;', '"')
+					.replaceAll('<p></p>', '<div><br></div>')
 					.replaceAll('<p>', '<div>')
 					.replaceAll('</p>', '</div>');
 		return editableText;
@@ -43,7 +44,9 @@ CONTROLLER DEPENDENT FUNCTIONS ENCAPSULATING REPEATED CODE
 
 	function convertTextForDatabase(input){
 		var editableText = new textEditor.HtmlString(input);
-		editableText.replaceAll('<div><br></div>', '<p></p>')
+		editableText.trimText()
+					.replaceAll('"', '&quot;')
+					.replaceAll('<div><br></div>', '<p></p>')
 					.replaceAll('<div', '<p')
 					.replaceAll('/div>', '/p>')
 		return editableText;

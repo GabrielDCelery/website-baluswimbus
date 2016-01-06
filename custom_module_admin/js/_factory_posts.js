@@ -25,6 +25,14 @@ postsFactory.factory('connectToPostsDatabase', ['$http', function($http){
 
 	}
 
+	function addNewPost(postData, callback){
+		$http({
+			method: 'POST',
+			url: 'custom_module_admin/php/addnew-post.php',
+			data: {data: postData}
+		}).then(callback)
+	}
+
 	function updatePost(postData, callback){
 		$http({
 			method: 'PUT',
@@ -44,6 +52,7 @@ postsFactory.factory('connectToPostsDatabase', ['$http', function($http){
 	return {
 		getList: getList,
 		getPosts: getPosts,
+		addNewPost: addNewPost,
 		updatePost: updatePost,
 		deletePost: deletePost
 	}
