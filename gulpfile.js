@@ -3,116 +3,124 @@ DEPENDENCIES
 *****************************************************************************************/
 
 var gulp = require('gulp');
-var connect = require('gulp-connect');
 var rename = require("gulp-rename");
 var sass = require('gulp-ruby-sass');
-var minifyCss = require('gulp-minify-css');
-var sourceMaps = require('gulp-sourcemaps');
+var cssnano = require('gulp-cssnano');
+var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var del = require('del');
-var htmlreplace = require('gulp-html-replace');
 
 /*****************************************************************************************
-DEVELOPER VIEW, LIVE RELOAD
-*****************************************************************************************/
-
-gulp.task('connectDev', function() {
-	connect.server(
-		{
-			port: 8000,
-			livereload: true
-		}
-	);
-});
-
-/*****************************************************************************************
-HTML
+HTML / MAIN
 *****************************************************************************************/
 
 gulp.task('html', function(){
-	gulp.src('*.html')
-	.pipe(connect.reload());
-})
+	return gulp.src('src/main/index.html')
+	.pipe(gulp.dest('public'));
+});
 
 /*****************************************************************************************
-SASS, CSS
+SASS, CSS / MAIN
 *****************************************************************************************/
 
-gulp.task('compileSass', function () {
-	return sass('scss/app.scss')
-	.pipe(sourceMaps.init())
+gulp.task('sass', function () {
+	return sass('src/main/scss/app.scss')
     .on('error', sass.logError)
-    .pipe(sourceMaps.write('./'))
-    .pipe(gulp.dest('css'))
-    .pipe(connect.reload());
+    .pipe(gulp.dest('public/css'));
 });
 
-gulp.task('minifyCss', ['compileSass'], function (){
-	return gulp.src('css/app.css')
-	.pipe(minifyCss({compatibility: 'ie8'}))
+gulp.task('minifyCss', ['sass'], function (){
+	return gulp.src('public/css/app.css')
+	.pipe(sourcemaps.init())
+	.pipe(cssnano())
+    .pipe(sourcemaps.write('.'))
 	.pipe(rename('app.min.css'))
-	.pipe(gulp.dest('css'));
+	.pipe(gulp.dest('public/css'));
 });
 
 /*****************************************************************************************
-JAVASCRIPT
+JAVASCRIPT / MAIN
 *****************************************************************************************/
 
 gulp.task('concatJs', function(){
 	return gulp.src(
 		[
-			'js/_eventemitter.js',
-			'js/_main.js',
-			'js/_nav.js',
-			'js/_get-posts.js',
-			'js/_texteditor.js'
+			'src/main/js/_eventemitter.js',
+			'src/main/js/_main.js',
+			'src/main/js/_nav.js',
+			'src/main/js/_get-posts.js',
+			'src/main/js/_texteditor.js'
 		]
 	)
 	.pipe(concat('app.js'))
-    .pipe(gulp.dest('js'))
-    .pipe(connect.reload());
-});
-
-gulp.task('concatJsCustomModuleAdmin', function(){
-	return gulp.src(
-		[
-			'custom_module_admin/js/_module_app.js',
-			'custom_module_admin/js/_factory_auth.js',
-			'custom_module_admin/js/_controller_auth.js',
-			'custom_module_admin/js/_factory_posts.js',
-			'custom_module_admin/js/_factory_texteditor.js',
-			'custom_module_admin/js/_controller_posts_addnew.js',
-			'custom_module_admin/js/_controller_posts_detailed.js',
-			'custom_module_admin/js/_controller_posts_list.js'
-		]
-	)
-	.pipe(concat('app.js'))
-    .pipe(gulp.dest('custom_module_admin/js'))
-    .pipe(connect.reload());
+    .pipe(gulp.dest('public/js'));
 });
 
 gulp.task('minifyJs', ['concatJs'], function (){
-	return gulp.src('js/app.js')
+	return gulp.src('public/js/app.js')
 	.pipe(uglify())
 	.pipe(rename('app.min.js'))
-    .pipe(gulp.dest('js'));
+    .pipe(gulp.dest('public/js'));
 });
 
 /*****************************************************************************************
-CLEAN
+JAVASCRIPT / PHP
 *****************************************************************************************/
 
-gulp.task('cleanDev', function(){
-	return del(
+gulp.task('php', function(){
+	return gulp.src('src/main/php/**/*.php')
+	.pipe(gulp.dest('public/php'));
+});
+
+/*****************************************************************************************
+HTML / ADMIN MODULE
+*****************************************************************************************/
+
+gulp.task('htmlAdmin', function(){
+
+	gulp.src('src/admin/admin.html')
+	.pipe(gulp.dest('public'));
+
+	gulp.src('src/admin/templates/**/*.html')
+	.pipe(gulp.dest('public/admin/templates'));
+
+});
+
+/*****************************************************************************************
+JAVASCRIPT / ADMIN MODULE
+*****************************************************************************************/
+
+gulp.task('concatJsAdmin', function(){
+	return gulp.src(
 		[
-			'.sass-cache',
-			'css/app.css.map',
-			'css/app.min.css',
-			'js/app.min.js',
-			'./distribution/**'
+			'src/admin/js/_module_app.js',
+			'src/admin/js/_factory_auth.js',
+			'src/admin/js/_controller_auth.js',
+			'src/admin/js/_factory_posts.js',
+			'src/admin/js/_factory_texteditor.js',
+			'src/admin/js/_controller_posts_addnew.js',
+			'src/admin/js/_controller_posts_detailed.js',
+			'src/admin/js/_controller_posts_list.js'
 		]
 	)
+	.pipe(concat('app.js'))
+    .pipe(gulp.dest('public/admin/js'));
+});
+
+gulp.task('minifyJsAdmin', ['concatJsAdmin'], function (){
+	return gulp.src('public/admin/js/app.js')
+	.pipe(uglify())
+	.pipe(rename('app.min.js'))
+    .pipe(gulp.dest('public/admin/js'));
+});
+
+/*****************************************************************************************
+JAVASCRIPT / PHP
+*****************************************************************************************/
+
+gulp.task('phpAdmin', function(){
+	return gulp.src('src/admin/php/**/*.php')
+	.pipe(gulp.dest('public/admin/php'));
 });
 
 /*****************************************************************************************
@@ -120,33 +128,14 @@ WATCH
 *****************************************************************************************/
 
 gulp.task('watch', function (){
-	gulp.watch('*.html', ['html']);
-	gulp.watch('scss/**/*.scss', ['compileSass']);
-	gulp.watch('js/**/*.js', ['concatJs']);
-	gulp.watch('custom_module_admin/js/**/*.js', ['concatJsCustomModuleAdmin']);
-});
-
-/*****************************************************************************************
-BUILD DISTRIBUTION
-*****************************************************************************************/
-
-gulp.task('build', ['minifyCss', 'minifyJs'], function(){
-	gulp.src(
-		[
-			'css/app.min.css',
-			'js/app.min.js',
-			'img/**',
-			'index.html'
-		], 
-		{
-			base: './'
-		}
-	)
-	.pipe(htmlreplace({
-        'css': 'css/app.min.css',
-        'js': 'js/app.min.js'
-    }))
-	.pipe(gulp.dest('distribution'));
+	gulp.watch('src/main/index.html', ['html']);
+	gulp.watch('src/main/scss/**/*.scss', ['minifyCss']);
+	gulp.watch('src/main/js/**/*.js', ['minifyJs']);
+	gulp.watch('src/main/php/**/*.php', ['php']);
+	gulp.watch('src/admin/admin.html', ['htmlAdmin']);
+	gulp.watch('src/admin/templates/**/*.html', ['htmlAdmin']);
+	gulp.watch('src/admin/js/**/*.js', ['minifyJsAdmin']);
+	gulp.watch('src/admin/php/**/*.php', ['phpAdmin']);
 });
 
 /*****************************************************************************************
@@ -155,10 +144,13 @@ DEFAULT
 
 gulp.task('default',
 	[
-		'connectDev',
-		'compileSass',
-		'concatJs',
-		'concatJsCustomModuleAdmin',
+		'html',
+		'minifyCss',
+		'minifyJs',
+		'php',
+		'htmlAdmin',
+		'minifyJsAdmin',
+		'phpAdmin',
 		'watch'
 	]
 );

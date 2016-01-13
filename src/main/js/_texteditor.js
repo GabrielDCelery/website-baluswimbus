@@ -55,5 +55,5 @@ Doc formatting functions
 		formatDoc($textEditorContent, id, argumentValue);
 	}
 
-}())
+}());
 

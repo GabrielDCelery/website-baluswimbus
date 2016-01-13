@@ -10,7 +10,7 @@ postsFactory.factory('connectToPostsDatabase', ['$http', function($http){
 
 		$http({
 			method: 'GET',
-			url: 'custom_module_admin/php/get-list-of-posts.php'
+			url: 'admin/php/get-list-of-posts.php'
 		}).then(callback);
 
 	}
@@ -19,7 +19,7 @@ postsFactory.factory('connectToPostsDatabase', ['$http', function($http){
 
 		$http({
 			method: 'POST',
-			url: 'custom_module_admin/php/get-posts.php',
+			url: 'admin/php/get-posts.php',
 			data: {data: arrayOfIds}
 		}).then(callback);
 
@@ -28,7 +28,7 @@ postsFactory.factory('connectToPostsDatabase', ['$http', function($http){
 	function addNewPost(postData, callback){
 		$http({
 			method: 'POST',
-			url: 'custom_module_admin/php/addnew-post.php',
+			url: 'admin/php/addnew-post.php',
 			data: {data: postData}
 		}).then(callback)
 	}
@@ -36,7 +36,7 @@ postsFactory.factory('connectToPostsDatabase', ['$http', function($http){
 	function updatePost(postData, callback){
 		$http({
 			method: 'PUT',
-			url: 'custom_module_admin/php/update-post.php',
+			url: 'admin/php/update-post.php',
 			data: {data: postData}
 		}).then(callback)
 	}
@@ -44,7 +44,7 @@ postsFactory.factory('connectToPostsDatabase', ['$http', function($http){
 	function deletePost(id, callback){
 		$http({
 			method: 'DELETE',
-			url: 'custom_module_admin/php/delete-post.php',
+			url: 'admin/php/delete-post.php',
 			data: {data: id}
 		}).then(callback);
 	}

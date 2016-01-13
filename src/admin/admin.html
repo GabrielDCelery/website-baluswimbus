@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/app.min.css">
+
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+	<script src="lib/angular-route/angular-route.js"></script>
+	<script src="lib/angular-cookies/angular-cookies.js"></script>
+	<script type="text/javascript" src="admin/js/app.min.js"></script>
+
+</head>
+<body ng-app='adminModule' ng-controller='authCtrl'>
+
+	<header>
+		<div>
+			BALUSWIMBUSZ
+		</div>
+		<div class="loginPanel" ng-show="display.content" ng-cloak>
+			{{username}}
+			<button ng-click="logout()">KILÉP</button>
+		</div>
+	</header>
+
+	<main>
+<!-- LOGIN -->
+		<div id="login-admin" ng-show="display.login" ng-cloak>
+			<form>
+				<label for="username">FELHASZNLÓ</label>
+				<input type="text" ng-model="username" id="username" placeholder="FELHASZNÁLÓ" />
+				<label for="password">JELSZÓ</label>
+				<input type="password" ng-model="password" id="passsword" placeholder="JELSZÓ" />
+				<input type="submit" value="BEJELENTKEZÉS" ng-click="login(username, password)"/>
+			</form>
+		</div>
+
+<!-- CONTENT -->
+		<div class="table" id="content-admin">
+			<div class="table-cell">
+				<div ng-view ng-show="display.content" ng-cloak></div>
+			</div>
+		</div>
+
+	</main>
+
+<!-- NAV -->
+	<nav id="adminNavBar" ng-show="display.content" ng-cloak>
+		<div id="nav-collapse">
+			<img src="img/arrow-down.png">
+			<img src="img/arrow-up.png" style="display:none">
+		</div>
+		<ul class="row">
+			<li class="col-3-6--s">
+				<a href="#/">
+					<div id="nav-aboutus">
+						<div class="nav-text">MEGLÉVŐ BEJEGYZÉSEK</div>
+					</div>
+				</a>
+			</li>
+			<li class="col-3-6--s">
+				<a href="#/addnew">
+					<div id="nav-services">
+						<div class="nav-text">ÚJ HOZZÁADÁSA</div>
+					</div>
+				</a>	
+			</li>
+		</ul>
+	</nav>
+
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/app.min.js"></script>
+	
+</body>
+</html>

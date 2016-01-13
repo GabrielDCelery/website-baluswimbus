@@ -120,7 +120,7 @@ authFactory.factory('passwordValidation', ['$http', function($http){
 				'username': username,
 				'password': password
 			},
-			url: 'custom_module_admin/php/password-validation.php'
+			url: 'admin/php/password-validation.php'
 		}).then(callback);
 
 	}
