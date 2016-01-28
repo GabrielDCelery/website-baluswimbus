@@ -26,7 +26,7 @@ FUNCTIONS
 
 	}
 
-	function showContent(contentId){
+	function showContent(contentIdSelector){
 
 		$contentBoxes.fadeOut("fast");
 
