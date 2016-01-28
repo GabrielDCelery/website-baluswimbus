@@ -47,6 +47,20 @@ EVENT BINDERS
 FUNCTIONS
 ********************************************************************/
 
+	function closeMainMenu(){
+		$nav.addClass('navCollapse');
+		$main.addClass('mainExtend');
+		$navSeparatorImagesArrowDown.hide();
+		$navSeparatorImagesArrowUp.show();
+	}
+
+	function openMainMenu(){
+		$nav.removeClass('navCollapse');
+		$main.removeClass('mainExtend');
+		$navSeparatorImagesArrowDown.show();
+		$navSeparatorImagesArrowUp.hide();
+	}
+
 	function toggleMainMenu(){
 		$nav.toggleClass('navCollapse');
 		$main.toggleClass('mainExtend');
@@ -82,20 +96,6 @@ FUNCTIONS
 
 	}
 
-	function closeMainMenu(){
-		$nav.addClass('navCollapse');
-		$main.addClass('mainExtend');
-		$navSeparatorImagesArrowDown.hide();
-		$navSeparatorImagesArrowUp.show();
-	}
-
-	function openMainMenu(){
-		$nav.removeClass('navCollapse');
-		$main.removeClass('mainExtend');
-		$navSeparatorImagesArrowDown.show();
-		$navSeparatorImagesArrowUp.hide();
-	}
-
 
 }());
 
@@ -127,13 +127,13 @@ FUNCTIONS
 
 	}
 
-	function showContent(contentId){
+	function showContent(contentIdSelector){
 
 		$contentBoxes.fadeOut("fast");
 
-		if(contentId == '#content-news') events.emit('getPostsMenu');
+		if(contentIdSelector == '#content-news') events.emit('getPostsMenu');
 
-		$contentBoxes.closest(contentId).fadeIn("fast");
+		$contentBoxes.closest(contentIdSelector).fadeIn("fast");
 
 	}
 

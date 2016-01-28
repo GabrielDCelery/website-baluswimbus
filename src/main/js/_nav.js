@@ -30,9 +30,9 @@ FUNCTIONS
 
 		$contentBoxes.fadeOut("fast");
 
-		if(contentId == '#content-news') events.emit('getPostsMenu');
+		if(contentIdSelector == '#content-news') events.emit('getPostsMenu');
 
-		$contentBoxes.closest(contentId).fadeIn("fast");
+		$contentBoxes.closest(contentIdSelector).fadeIn("fast");
 
 	}
 

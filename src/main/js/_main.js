@@ -33,6 +33,20 @@ EVENT BINDERS
 FUNCTIONS
 ********************************************************************/
 
+	function closeMainMenu(){
+		$nav.addClass('navCollapse');
+		$main.addClass('mainExtend');
+		$navSeparatorImagesArrowDown.hide();
+		$navSeparatorImagesArrowUp.show();
+	}
+
+	function openMainMenu(){
+		$nav.removeClass('navCollapse');
+		$main.removeClass('mainExtend');
+		$navSeparatorImagesArrowDown.show();
+		$navSeparatorImagesArrowUp.hide();
+	}
+
 	function toggleMainMenu(){
 		$nav.toggleClass('navCollapse');
 		$main.toggleClass('mainExtend');
@@ -66,20 +80,6 @@ FUNCTIONS
 			openMainMenu();
 		}
 
-	}
-
-	function closeMainMenu(){
-		$nav.addClass('navCollapse');
-		$main.addClass('mainExtend');
-		$navSeparatorImagesArrowDown.hide();
-		$navSeparatorImagesArrowUp.show();
-	}
-
-	function openMainMenu(){
-		$nav.removeClass('navCollapse');
-		$main.removeClass('mainExtend');
-		$navSeparatorImagesArrowDown.show();
-		$navSeparatorImagesArrowUp.hide();
 	}
 
 
