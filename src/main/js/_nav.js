@@ -21,15 +21,19 @@ FUNCTIONS
 ********************************************************************/
 
 	function getContentId(navId){
+
 		return navId.replace("nav-", "#content-");
+		
 	}
 
 	function showContent(contentId){
+
 		$contentBoxes.fadeOut("fast");
 
 		if(contentId == '#content-news') events.emit('getPostsMenu');
 
 		$contentBoxes.closest(contentId).fadeIn("fast");
+
 	}
 
 	function showSelectedContent(){
