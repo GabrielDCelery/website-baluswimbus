@@ -20,10 +20,10 @@ EVENT BINDERS
 FUNCTIONS
 ********************************************************************/
 
-	function getContentId(navId){
+	function getContentIdSelector(navId){
 
 		return navId.replace("nav-", "#content-");
-		
+
 	}
 
 	function showContent(contentId){
@@ -38,13 +38,11 @@ FUNCTIONS
 
 	function showSelectedContent(){
 
-		var selectedContentId = getContentId($(this).attr('id'));
-
-		showContent(selectedContentId);
+		showContent(getContentIdSelector($(this).attr('id')));
 
 		$appWindow.scrollTop(0);
 
-		if($(window).width() < 700) events.emit('toggleMainMenu');
+		events.emit('toggleMainMenu');
 
 	}
 
