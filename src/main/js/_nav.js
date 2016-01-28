@@ -20,34 +20,27 @@ EVENT BINDERS
 FUNCTIONS
 ********************************************************************/
 
-	function showSelectedContent(){
+	function getContentId(navId){
+		return navId.replace("nav-", "#content-");
+	}
 
-		var selectedButtonId = $(this).attr('id')
-		selectedButtonId = selectedButtonId.replace("nav-", "");
-		var selectedContentId = "content-" + selectedButtonId;
-
+	function showContent(contentId){
 		$contentBoxes.fadeOut("fast");
 
-		$contentBoxes.each(function(index){
+		if(contentId == '#content-news') events.emit('getPostsMenu');
 
-			var contentBoxId = $(this).attr('id');
+		$contentBoxes.closest(contentId).fadeIn("fast");
+	}
 
-			if(contentBoxId === selectedContentId){
-				$(this).fadeIn("fast");
-			}
+	function showSelectedContent(){
 
-		});
+		var selectedContentId = getContentId($(this).attr('id'));
+
+		showContent(selectedContentId);
 
 		$appWindow.scrollTop(0);
 
-		if($(window).width() < 700){
-			events.emit('toggleMainMenu');
-		}
-
-
-		if(selectedButtonId == 'news'){
-			events.emit('getPostsMenu');
-		}
+		if($(window).width() < 700) events.emit('toggleMainMenu');
 
 	}
 
