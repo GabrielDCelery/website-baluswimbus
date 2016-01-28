@@ -24,19 +24,16 @@ VARIABLES
 	var $main = $('main');
 	var $nav = $('nav');
 	var $introContent = $('#content-intro');
-	var $navCollapse = $('#nav-collapse');
+	var $navCollapseButton = $('#nav-collapse');
 	var $navSeparatorImages = $('#nav-collapse img');
 	var $navSeparatorImagesArrowDown = $('#nav-collapse img:first-of-type');
 	var $navSeparatorImagesArrowUp = $('#nav-collapse img:last-of-type');
-
-	var lastScrollTop = 0;
-
 
 /********************************************************************
 EVENT BINDERS
 ********************************************************************/
 
-	$navCollapse.on('click', toggleMainMenu);
+	$navCollapseButton.on('click', toggleMainMenu);
 	$introContent.on('click', toggleMainMenu);
 	$appWindow.on('scroll', scrollToggleMainMenu);
 	$appWindow.on('wheel', mousewheelToggleMainMenu);
@@ -69,16 +66,11 @@ FUNCTIONS
 
 	function scrollToggleMainMenu(event){
 
-		if ($appWindow.scrollTop() != lastScrollTop && $appWindow.scrollTop() != 0){
+		if ($appWindow.scrollTop() == 0){
+			openMainMenu();
+		} else {
 			closeMainMenu();
 		}
-
-		if ($appWindow.scrollTop() != lastScrollTop && $appWindow.scrollTop() == 0 && $appWindow.width() > 700){
-			openMainMenu();
-		}
-
-
-		lastScrollTop = $appWindow.scrollTop();
 
 	}
 
@@ -90,7 +82,7 @@ FUNCTIONS
 			closeMainMenu();
 		}
 
-		if (mouseDirection < 0 && lastScrollTop == 0){
+		if (mouseDirection < 0 && $appWindow.scrollTop() == 0){
 			openMainMenu();
 		}
 
