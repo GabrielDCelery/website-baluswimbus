@@ -79,7 +79,9 @@ JAVASCRIPT / ADMIN MODULE
 gulp.task('concatJsAdmin', function(){
 	return gulp.src(
 		[
-			'src/admin/js/module_main.js'
+			'src/admin/js/module_main.js',
+			'src/admin/js/_controller_auth.js',
+			'src/admin/js/_factory_auth.js'
 		]
 	)
 	.pipe(concat('app.js'))
