@@ -73,34 +73,13 @@ gulp.task('php', function(){
 });
 
 /*****************************************************************************************
-HTML / ADMIN MODULE
-*****************************************************************************************/
-
-gulp.task('htmlAdmin', function(){
-
-	gulp.src('src/_admin/admin.html')
-	.pipe(gulp.dest('public'));
-
-	gulp.src('src/_admin/templates/**/*.html')
-	.pipe(gulp.dest('public/admin/templates'));
-
-});
-
-/*****************************************************************************************
 JAVASCRIPT / ADMIN MODULE
 *****************************************************************************************/
 
 gulp.task('concatJsAdmin', function(){
 	return gulp.src(
 		[
-			'src/_admin/js/_module_app.js',
-			'src/_admin/js/_factory_auth.js',
-			'src/_admin/js/_controller_auth.js',
-			'src/_admin/js/_factory_posts.js',
-			'src/_admin/js/_factory_texteditor.js',
-			'src/_admin/js/_controller_posts_addnew.js',
-			'src/_admin/js/_controller_posts_detailed.js',
-			'src/_admin/js/_controller_posts_list.js'
+			'src/admin/js/module_main.js'
 		]
 	)
 	.pipe(concat('app.js'))
@@ -119,7 +98,7 @@ JAVASCRIPT / PHP
 *****************************************************************************************/
 
 gulp.task('phpAdmin', function(){
-	return gulp.src('src/_admin/php/**/*.php')
+	return gulp.src('src/admin/php/**/*.php')
 	.pipe(gulp.dest('public/admin/php'));
 });
 
@@ -132,10 +111,8 @@ gulp.task('watch', function (){
 	gulp.watch('src/main/scss/**/*.scss', ['minifyCss']);
 	gulp.watch('src/main/js/**/*.js', ['minifyJs']);
 	gulp.watch('src/main/php/**/*.php', ['php']);
-	gulp.watch('src/_admin/admin.html', ['htmlAdmin']);
-	gulp.watch('src/_admin/templates/**/*.html', ['htmlAdmin']);
-	gulp.watch('src/_admin/js/**/*.js', ['minifyJsAdmin']);
-	gulp.watch('src/_admin/php/**/*.php', ['phpAdmin']);
+	gulp.watch('src/admin/js/**/*.js', ['minifyJsAdmin']);
+	gulp.watch('src/admin/php/**/*.php', ['phpAdmin']);
 });
 
 /*****************************************************************************************
@@ -148,7 +125,6 @@ gulp.task('default',
 		'minifyCss',
 		'minifyJs',
 		'php',
-		'htmlAdmin',
 		'minifyJsAdmin',
 		'phpAdmin',
 		'watch'
