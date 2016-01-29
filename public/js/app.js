@@ -152,14 +152,20 @@ FUNCTIONS
 VARIABLES
 ********************************************************************/
 
+	/* Selectors */
+
 	var $newsContainer = $('#content-news');
 	var $postsMenu = $('#content-news .postsMenu');
 	var $postsContainer = $('#content-news .postsContainer');
 
-	var getListOfPostsUrl = 'php/get-list-of-posts.php';
-	var getPostsUrl = 'php/get-posts.php';
+	/* URLs */
 
-	var listOfIds = [];
+	var urlToGetListOfPosts = 'php/get-list-of-posts.php';
+	var urlToGetPosts = 'php/get-posts.php';
+
+	/* Posts */
+
+	var listOfPostIds = [];
 	var numberOfPostsPerPage = 3;
 
 /********************************************************************
@@ -173,15 +179,7 @@ EVENT BINDERS
 	events.on('renderPosts', renderPosts);
 
 	$postsMenu.on('click', 'li', function(){
-		var $li = $(this);
-		var data = $li.html();
-		events.emit('getPosts', data);
-	})
-
-	$postsMenu.on('click', 'select', function(){
-		var $select = $(this);
-		var data = $select.val();
-		events.emit('getPosts', data);
+		events.emit('getPosts', $(this).html());
 	})
 
 /********************************************************************
@@ -191,18 +189,16 @@ FUNCTIONS
 function getPostsMenu(){
 	$.ajax({
 		type: 'GET',
-		url: getListOfPostsUrl,
+		url: urlToGetListOfPosts,
 		dataType: 'json',
-		success: renderPostsMenu
+		success: function(response){
+			listOfPostIds = response;
+			events.emit('renderPostsMenu', listOfPostIds);
+		}
 	});
 }
 
-function renderPostsMenu(arrayOfIds){
-
-	listOfIds = arrayOfIds;
-
-	var numberOfPosts = listOfIds.length;
-	var numberOfPages = Math.ceil(numberOfPosts / numberOfPostsPerPage);
+function htmlStringForPostsMenu(numberOfPages){
 
 	var htmlString = '';
 	htmlString += '<select class="postsMenu-mobile">';
@@ -216,63 +212,88 @@ function renderPostsMenu(arrayOfIds){
 	}
 	htmlString += '</ul>';
 
-	$postsMenu.html(htmlString);
+	return htmlString;
+
+}
+
+function renderPostsMenu(listOfPostIds){
+
+	var numberOfPages = Math.ceil(listOfPostIds.length / numberOfPostsPerPage);
+
+	$postsMenu.html(htmlStringForPostsMenu(numberOfPages));
 
 	events.emit('getPosts', 1);
 
 }
 
+function calculateWhichPostsToGet(listOfPostIds, pageNumber){
 
-function getPosts(pageNumber){
-
-	var arrayofIds = [];
+	var filteredListOfPostIds = [];
 	var firstPost = (pageNumber - 1) * numberOfPostsPerPage;
-	var lastPost = (pageNumber - 1) * numberOfPostsPerPage + numberOfPostsPerPage;
+	var lastPost = pageNumber * numberOfPostsPerPage;
+
+	console.log(firstPost + ', ' + lastPost)
 
 	for(var i = firstPost; i < lastPost; i++){
-		if(typeof(listOfIds[i]) !== 'undefined'){
-			arrayofIds.push(listOfIds[i].id);
+		if(typeof(listOfPostIds[i]) !== 'undefined'){
+			filteredListOfPostIds.push(listOfPostIds[i].id);
 		}
 	}
 
+	return filteredListOfPostIds;
+
+}
+
+function getPosts(pageNumber){
+
+	var filteredListOfPostIds = calculateWhichPostsToGet(listOfPostIds, pageNumber);
+
 	$.ajax({
 		type: 'POST',
-		data: {data: arrayofIds},
-		url: getPostsUrl,
+		data: {data: filteredListOfPostIds},
+		url: urlToGetPosts,
 		dataType: 'json',
 		success: renderPosts
 	});
 
 }
 
-function renderPosts(postData){
+function htmlStringForPosts(postData, titleProperty, dateProperty, contentProperty){
 
 	var htmlString = '';
 
 	for(var i = 0; i < postData.length; i++){
-
 		htmlString += '<div class="row">';
 		htmlString += '<div class="col-5-6--s content-padding">';
 		htmlString += '<p class="post-title">';
-		htmlString += postData[i]['post_title'];
+		htmlString += postData[i][titleProperty];
 		htmlString += '</p>';
 		htmlString += '</div>';
 		htmlString += '<div class="col-1-6--s content-padding">';
 		htmlString += '<p>';
-		htmlString += postData[i]['post_date'];
+		htmlString += postData[i][dateProperty];
 		htmlString += '</p>';
 		htmlString += '</div>';
 		htmlString += '</div>';
 		htmlString += '<div class="row">';
 		htmlString += '<div class="col-6-6--s content-padding">';
-		htmlString += postData[i]['post_content'];
+		htmlString += postData[i][contentProperty];
 		htmlString += '</div>';
 		htmlString += '</div>';
-
 	}
 
-	$postsContainer.html(htmlString);
+	return htmlString;
+
 }
+
+function renderPosts(postData){
+
+	$postsContainer.html(htmlStringForPosts(postData, 'post_title', 'post_date', 'post_content'));
+
+}
+
+
+
 
 }());
 
