@@ -103,6 +103,7 @@ gulp.task('concatJsAdmin', function(){
 			'src/admin/js/_controller_auth.js',
 			'src/admin/js/_factory_auth.js',
 			'src/admin/js/_controller_addnew.js',
+			'src/admin/js/_controller_posts.js',
 			'src/admin/js/_factory_database.js',
 			'src/admin/js/_factory_texteditor.js',
 			'src/admin/js/_factory_alerts.js'

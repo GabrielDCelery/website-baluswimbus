@@ -2,6 +2,13 @@ var AlertsFactory = angular.module('AlertsFactory', []);
 
 AlertsFactory.factory('Alerts', ['$http', function ($http){
 
+	function confirmChange(callback){
+		var confirmed = confirm('Biztosan végre szeretné hajtani a változtatásokat?');
+		if(confirmed){
+			callback();
+		}
+	}
+
 	function checkSuccess(input){
 		if(input == true){
 			alert('Feladat sikeresen végrehajtva!');
@@ -11,7 +18,8 @@ AlertsFactory.factory('Alerts', ['$http', function ($http){
 	}
 
 	return {
-		checkSuccess: checkSuccess
+		checkSuccess: checkSuccess,
+		confirmChange: confirmChange
 	}
 
 }]);

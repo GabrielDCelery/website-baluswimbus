@@ -4,6 +4,7 @@ var AdminApp = angular.module('AdminApp', [
 	'AuthCtrl', 
 	'AuthFactory',
 	'AddNewCtrl',
+	'PostsCtrl',
 	'ui.tinymce',
 	'DatabaseFactory',
 	'TextEditorFactory',
@@ -14,11 +15,15 @@ AdminApp.config(['$routeProvider', '$locationProvider', function ($routeProvider
 
 	$routeProvider
 	.when('/posts', {
-		templateUrl: 'templates/_posts.html'
+		templateUrl: 'templates/_posts.html',
+		controller: 'PostsCtrl'
 	})
 	.when('/addnew', {
 		templateUrl: 'templates/_addnew.html',
 		controller: 'AddNewCtrl'
+	})
+	.when('/:id', {
+		templateUrl: 'templates/_edit.html',
 	})
 	.otherwise({
 		redirectTo: '/'
@@ -265,16 +270,70 @@ BINDING EVENTS
 
 
 }]);
+var PostsCtrl = angular.module('PostsCtrl', []);
+
+PostsCtrl.controller('PostsCtrl', ['$scope', 'Alerts', 'Database', function ($scope, Alerts, Database){
+
+/*****************************************************************************************
+VARIABLES
+*****************************************************************************************/
+
+	$scope.listOfPosts;
+	$scope.sortorder = 'date';
+	$scope.reverseOrder = false;
+
+/*****************************************************************************************
+FUNCTIONS
+*****************************************************************************************/
+
+	function getListOfPosts(){
+		Database.getListOfPosts(function(response){
+			$scope.listOfPosts = response.data;
+		})
+	}
+
+	function deletePost(id){
+		Alerts.confirmChange(function(){
+			Database.deletePost(id, function(response){
+				Alerts.checkSuccess(response.data);
+				getListOfPosts();
+			})
+		});
+	}
+
+/*****************************************************************************************
+BINDING FUNCTIONS
+*****************************************************************************************/
+
+	$scope.deletePost = deletePost;
+
+/*****************************************************************************************
+INITIATING FUNCTION UPON LOADING
+*****************************************************************************************/
+
+	getListOfPosts();
+
+}]);
 var DatabaseFactory = angular.module('DatabaseFactory', []);
 
 DatabaseFactory.factory('Database', ['$http', function ($http){
+
+	function getListOfPosts(callback){
+		$http.get('php/get_list_of_posts.php').then(callback);
+	}
 
 	function addNewPost(input, callback){
 		$http.post('php/save_post.php', input).then(callback);
 	}
 
+	function deletePost(id, callback){
+		$http.post('php/delete_post.php', id).then(callback);
+	}
+
 	return {
-		addNewPost: addNewPost
+		getListOfPosts: getListOfPosts,
+		addNewPost: addNewPost,
+		deletePost: deletePost
 	}
 
 }]);
@@ -300,6 +359,13 @@ var AlertsFactory = angular.module('AlertsFactory', []);
 
 AlertsFactory.factory('Alerts', ['$http', function ($http){
 
+	function confirmChange(callback){
+		var confirmed = confirm('Biztosan végre szeretné hajtani a változtatásokat?');
+		if(confirmed){
+			callback();
+		}
+	}
+
 	function checkSuccess(input){
 		if(input == true){
 			alert('Feladat sikeresen végrehajtva!');
@@ -309,7 +375,8 @@ AlertsFactory.factory('Alerts', ['$http', function ($http){
 	}
 
 	return {
-		checkSuccess: checkSuccess
+		checkSuccess: checkSuccess,
+		confirmChange: confirmChange
 	}
 
 }]);

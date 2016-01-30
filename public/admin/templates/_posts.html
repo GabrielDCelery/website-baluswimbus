@@ -1,1 +1,24 @@
-posts
+<div class="row">
+	<div class="col-md-12">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<td ng-click="sortField = 'date'; reverseOrder = !reverseOrder">Dátum</td>
+					<td ng-click="sortField = 'title'; reverseOrder = !reverseOrder">Bejegyzés címe</td>
+					<td ng-click="sortField = 'status'; reverseOrder = !reverseOrder">Státusz</td>
+					<td>Szerkeszt</td>
+					<td>Töröl</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="post in listOfPosts | orderBy:sortField:reverseOrder">
+					<td>{{post.date | date:'yyyy-MM-dd'}}</td>
+					<td>{{post.title}}</td>
+					<td>{{post.status}}</td>
+					<td><a href="#/{{post.id}}">Szerkeszt</a></td>
+					<td><a href="" ng-click="deletePost(post.id)">Töröl</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
