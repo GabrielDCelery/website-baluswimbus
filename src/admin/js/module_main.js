@@ -5,6 +5,7 @@ var AdminApp = angular.module('AdminApp', [
 	'AuthFactory',
 	'AddNewCtrl',
 	'PostsCtrl',
+	'EditCtrl',
 	'ui.tinymce',
 	'DatabaseFactory',
 	'TextEditorFactory',
@@ -14,16 +15,17 @@ var AdminApp = angular.module('AdminApp', [
 AdminApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider){
 
 	$routeProvider
+	.when('/', {
+		templateUrl: 'templates/_addnew.html',
+		controller: 'AddNewCtrl'
+	})
 	.when('/posts', {
 		templateUrl: 'templates/_posts.html',
 		controller: 'PostsCtrl'
 	})
-	.when('/addnew', {
-		templateUrl: 'templates/_addnew.html',
-		controller: 'AddNewCtrl'
-	})
 	.when('/:id', {
 		templateUrl: 'templates/_edit.html',
+		controller: 'EditCtrl'
 	})
 	.otherwise({
 		redirectTo: '/'

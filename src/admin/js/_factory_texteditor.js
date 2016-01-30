@@ -11,6 +11,7 @@ TextEditorFactory.factory('TextEditor', ['$http', function ($http){
 		return input;
 	}
 
+
 	return {
 		checkInput: checkInput
 	}
