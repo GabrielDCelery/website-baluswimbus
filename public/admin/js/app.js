@@ -2,7 +2,12 @@ var AdminApp = angular.module('AdminApp', [
 	'ngRoute',
 	'ngCookies',
 	'AuthCtrl', 
-	'AuthFactory'
+	'AuthFactory',
+	'AddNewCtrl',
+	'ui.tinymce',
+	'DatabaseFactory',
+	'TextEditorFactory',
+	'AlertsFactory'
 ]);
 
 AdminApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider){
@@ -12,7 +17,8 @@ AdminApp.config(['$routeProvider', '$locationProvider', function ($routeProvider
 		templateUrl: 'templates/_posts.html'
 	})
 	.when('/addnew', {
-		templateUrl: 'templates/_addnew.html'
+		templateUrl: 'templates/_addnew.html',
+		controller: 'AddNewCtrl'
 	})
 	.otherwise({
 		redirectTo: '/'
@@ -200,5 +206,110 @@ AuthFactory.factory('AuthFactory', ['$http', '$cookies', function ($http, $cooki
 		getLoginCookie: getLoginCookie
 	}
 
+
+}]);
+var AddNewCtrl = angular.module('AddNewCtrl', []);
+
+AddNewCtrl.controller('AddNewCtrl', [
+	'$scope', 
+	'TextEditor', 
+	'Database', 
+	'Alerts',
+	function (
+		$scope, 
+		TextEditor, 
+		Database,
+		Alerts
+){
+
+/****************************************************************************
+VARIABLES
+****************************************************************************/
+
+	$scope.postData = {
+		title: '',
+		date: new Date(),
+		input: '',
+		status: ''
+	}
+
+/****************************************************************************
+INITITATING TINYMCE TEXTEDITOR
+****************************************************************************/
+
+	tinyMCE.init({
+		selector:'textarea',
+		height: 350
+	});
+
+/****************************************************************************
+FUNCTIONS
+****************************************************************************/
+
+	function addNewPost(status){
+
+		$scope.postData.input = TextEditor.checkInput($scope.tinymceModel);
+		$scope.postData.status = status;
+
+		Database.addNewPost($scope.postData, function (response){
+			Alerts.checkSuccess(response.data);
+		})
+
+	}
+
+/****************************************************************************
+BINDING EVENTS
+****************************************************************************/
+
+	$scope.addNewPost = addNewPost;
+
+
+}]);
+var DatabaseFactory = angular.module('DatabaseFactory', []);
+
+DatabaseFactory.factory('Database', ['$http', function ($http){
+
+	function addNewPost(input, callback){
+		$http.post('php/save_post.php', input).then(callback);
+	}
+
+	return {
+		addNewPost: addNewPost
+	}
+
+}]);
+var TextEditorFactory = angular.module('TextEditorFactory', []);
+
+TextEditorFactory.factory('TextEditor', ['$http', function ($http){
+
+	function checkInput(input){
+
+		if(!input){
+			input = tinyMCE.activeEditor.getContent();
+		}
+
+		return input;
+	}
+
+	return {
+		checkInput: checkInput
+	}
+
+}])
+var AlertsFactory = angular.module('AlertsFactory', []);
+
+AlertsFactory.factory('Alerts', ['$http', function ($http){
+
+	function checkSuccess(input){
+		if(input == true){
+			alert('Feladat sikeresen végrehajtva!');
+		} else {
+			alert('Nem sikerült a feladatot végehajtani!');
+		}
+	}
+
+	return {
+		checkSuccess: checkSuccess
+	}
 
 }]);

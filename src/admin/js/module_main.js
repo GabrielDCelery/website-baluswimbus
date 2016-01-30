@@ -2,7 +2,12 @@ var AdminApp = angular.module('AdminApp', [
 	'ngRoute',
 	'ngCookies',
 	'AuthCtrl', 
-	'AuthFactory'
+	'AuthFactory',
+	'AddNewCtrl',
+	'ui.tinymce',
+	'DatabaseFactory',
+	'TextEditorFactory',
+	'AlertsFactory'
 ]);
 
 AdminApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider){
@@ -12,7 +17,8 @@ AdminApp.config(['$routeProvider', '$locationProvider', function ($routeProvider
 		templateUrl: 'templates/_posts.html'
 	})
 	.when('/addnew', {
-		templateUrl: 'templates/_addnew.html'
+		templateUrl: 'templates/_addnew.html',
+		controller: 'AddNewCtrl'
 	})
 	.otherwise({
 		redirectTo: '/'

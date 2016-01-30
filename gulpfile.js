@@ -72,6 +72,26 @@ gulp.task('php', function(){
 	.pipe(gulp.dest('public/php'));
 });
 
+
+/*****************************************************************************************
+SASS, CSS / MAIN / ADMIN MODULE
+*****************************************************************************************/
+
+gulp.task('sassAdmin', function () {
+	return sass('src/admin/scss/app.scss')
+    .on('error', sass.logError)
+    .pipe(gulp.dest('public/admin/css'));
+});
+
+gulp.task('minifyCssAdmin', ['sassAdmin'], function (){
+	return gulp.src('public/admin/css/app.css')
+	.pipe(sourcemaps.init())
+	.pipe(cssnano())
+    .pipe(sourcemaps.write('.'))
+	.pipe(rename('app.min.css'))
+	.pipe(gulp.dest('public/admin/css'));
+});
+
 /*****************************************************************************************
 JAVASCRIPT / ADMIN MODULE
 *****************************************************************************************/
@@ -81,7 +101,11 @@ gulp.task('concatJsAdmin', function(){
 		[
 			'src/admin/js/module_main.js',
 			'src/admin/js/_controller_auth.js',
-			'src/admin/js/_factory_auth.js'
+			'src/admin/js/_factory_auth.js',
+			'src/admin/js/_controller_addnew.js',
+			'src/admin/js/_factory_database.js',
+			'src/admin/js/_factory_texteditor.js',
+			'src/admin/js/_factory_alerts.js'
 		]
 	)
 	.pipe(concat('app.js'))
@@ -111,6 +135,7 @@ WATCH
 gulp.task('watch', function (){
 	gulp.watch('src/main/index.html', ['html']);
 	gulp.watch('src/main/scss/**/*.scss', ['minifyCss']);
+	gulp.watch('src/admin/scss/**/*.scss', ['minifyCssAdmin']);
 	gulp.watch('src/main/js/**/*.js', ['minifyJs']);
 	gulp.watch('src/main/php/**/*.php', ['php']);
 	gulp.watch('src/admin/js/**/*.js', ['minifyJsAdmin']);
@@ -125,6 +150,7 @@ gulp.task('default',
 	[
 		'html',
 		'minifyCss',
+		'minifyCssAdmin',
 		'minifyJs',
 		'php',
 		'minifyJsAdmin',

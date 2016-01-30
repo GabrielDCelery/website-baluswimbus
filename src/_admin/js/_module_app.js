@@ -6,7 +6,7 @@ var adminModule = angular.module('adminModule', [
 	'addNewPostController',
 	'detailedPostController',
 	'postsFactory',
-	'textEditorFactory'
+	'TextEditorFactory'
 ]);
 
 
