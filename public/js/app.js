@@ -135,8 +135,10 @@ FUNCTIONS
 
 		$appWindow.scrollTop(0);
 
-		events.emit('toggleMainMenu');
-
+		if($(window).width() < 700){
+			events.emit('toggleMainMenu');
+		}
+		
 	}
 
 }());
