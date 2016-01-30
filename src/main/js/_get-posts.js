@@ -86,8 +86,6 @@ function calculateWhichPostsToGet(listOfPostIds, pageNumber){
 	var firstPost = (pageNumber - 1) * numberOfPostsPerPage;
 	var lastPost = pageNumber * numberOfPostsPerPage;
 
-	console.log(firstPost + ', ' + lastPost)
-
 	for(var i = firstPost; i < lastPost; i++){
 		if(typeof(listOfPostIds[i]) !== 'undefined'){
 			filteredListOfPostIds.push(listOfPostIds[i].id);
@@ -108,8 +106,8 @@ function getPosts(pageNumber){
 		url: urlToGetPosts,
 		dataType: 'json',
 		success: renderPosts
-	});
-
+	})
+	
 }
 
 function htmlStringForPosts(postData, titleProperty, dateProperty, contentProperty){
@@ -145,7 +143,6 @@ function renderPosts(postData){
 	$postsContainer.html(htmlStringForPosts(postData, 'post_title', 'post_date', 'post_content'));
 
 }
-
 
 
 
