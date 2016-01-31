@@ -281,8 +281,8 @@ VARIABLES
 *****************************************************************************************/
 
 	$scope.listOfPosts;
-	$scope.sortorder = 'date';
-	$scope.reverseOrder = false;
+	$scope.sortField = 'date';
+	$scope.reverseOrder = true;
 
 /*****************************************************************************************
 FUNCTIONS

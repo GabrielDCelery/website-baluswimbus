@@ -17,7 +17,7 @@ $pdo = $connection->connect();
 QUERY
 ************************************************************/
 
-$querystring = "SELECT id, post_status AS status, post_date AS date, post_title AS title FROM posts ORDER BY date DESC";
+$querystring = "SELECT id, post_status AS status, post_date AS date, post_title AS title FROM posts";
 
 $preparedstatement = $pdo->prepare($querystring);
 $preparedstatement->execute();
