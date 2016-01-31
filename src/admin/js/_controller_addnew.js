@@ -34,6 +34,7 @@ FUNCTIONS
 
 		Database.addNewPost($scope.postData, function (response){
 			Alerts.checkSuccess(response.data);
+			$location.path('/');
 		})
 
 	}

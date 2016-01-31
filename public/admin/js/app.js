@@ -251,6 +251,7 @@ FUNCTIONS
 
 		Database.addNewPost($scope.postData, function (response){
 			Alerts.checkSuccess(response.data);
+			$location.path('/');
 		})
 
 	}
@@ -357,7 +358,7 @@ FUNCTION
 
 		Database.editPost($scope.postData, function (response){
 			Alerts.checkSuccess(response.data);
-			$location.path('/posts');
+			$location.path('/');
 		})
 
 	}
