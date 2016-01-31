@@ -2,11 +2,13 @@ var AddNewCtrl = angular.module('AddNewCtrl', []);
 
 AddNewCtrl.controller('AddNewCtrl', [
 	'$scope', 
+	'$location', 
 	'TextEditor', 
 	'Database', 
 	'Alerts',
 	function (
 		$scope, 
+		$location, 
 		TextEditor, 
 		Database,
 		Alerts
