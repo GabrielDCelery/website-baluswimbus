@@ -15,11 +15,11 @@ var AdminApp = angular.module('AdminApp', [
 AdminApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider){
 
 	$routeProvider
-	.when('/', {
+	.when('/addnew', {
 		templateUrl: 'templates/_addnew.html',
 		controller: 'AddNewCtrl'
 	})
-	.when('/posts', {
+	.when('/', {
 		templateUrl: 'templates/_posts.html',
 		controller: 'PostsCtrl'
 	})
