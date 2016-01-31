@@ -6,8 +6,8 @@ DATABASE TABLES DATA FORMAT
 
 class dbConnect {
 	private $host = 'localhost';
-	private $db_name = "baluswimbusz";
-	private $admin_username = "root";
+	private $db_name = 'baluswimbusz';
+	private $admin_username = 'root';
 	private $admin_password = null;
 
 	public function connect(){
