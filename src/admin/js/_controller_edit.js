@@ -60,13 +60,8 @@ BINDING EVENTS
 	$scope.editPost = editPost;
 
 /****************************************************************************
-INITITATING TINYMCE TEXTEDITOR
+INITITATING FUNCTIONS
 ****************************************************************************/
-
-	tinyMCE.init({
-		selector:'textarea',
-		height: 350
-	});
 
 	getPost($scope.postData.id);
 
