@@ -2,7 +2,7 @@
 
 ## Description
 
-Introduction website for a company handling personal transportation and a small news section manager.
+Introduction website for a company handling personal transportation and also a lightweight news section manager.
 
 ## Tools and languages used during the project
 
@@ -20,6 +20,20 @@ Introduction website for a company handling personal transportation and a small 
 
 	* draft (design for the website)
 	* public (finalized production for deployment)
+		* admin (finalized admin app)
+		* css
+		* img
+		* js
+		* lib
+		* php
+		* index.html
+		* settings.php (containing the database settings)
 	* src (editable code that's managed by gulp)
-		* admin (code for admin application)
+		* admin (code for the admin panel of the blogging application)
+			* js
+			* php
+			* scss
 		* main (code for the website)
+			* js
+			* php
+			* scss
